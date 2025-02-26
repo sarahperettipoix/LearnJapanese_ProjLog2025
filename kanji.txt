@@ -1,0 +1,1 @@
+('日', 'nichi', 'Day/Sun', 'audio/nichi.mp3', 'kanji');
