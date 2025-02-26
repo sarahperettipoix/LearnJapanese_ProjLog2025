@@ -1,0 +1,130 @@
+('あ', 'a', 'Ah', 'audio/a.mp3', 'hiragana'),
+('い', 'i', 'Ih', 'audio/i.mp3', 'hiragana'),
+('う', 'u', 'Uh', 'audio/u.mp3', 'hiragana'),
+('え', 'e', 'Eh', 'audio/e.mp3', 'hiragana'),
+('お', 'o', 'Oh', 'audio/o.mp3', 'hiragana'),
+
+('か', 'ka', 'Ka', 'audio/ka.mp3', 'hiragana'),
+('き', 'ki', 'Ki', 'audio/ki.mp3', 'hiragana'),
+('く', 'ku', 'Ku', 'audio/ku.mp3', 'hiragana'),
+('け', 'ke', 'Ke', 'audio/ke.mp3', 'hiragana'),
+('こ', 'ko', 'Ko', 'audio/ko.mp3', 'hiragana'),
+
+('が', 'ga', 'Ga', 'audio/ga.mp3', 'hiragana'),
+('ぎ', 'gi', 'Gi', 'audio/gi.mp3', 'hiragana'),
+('ぐ', 'gu', 'Gu', 'audio/gu.mp3', 'hiragana'),
+('げ', 'ge', 'Ge', 'audio/ge.mp3', 'hiragana'),
+('ご', 'go', 'Go', 'audio/go.mp3', 'hiragana'),
+
+('さ', 'sa', 'Sa', 'audio/sa.mp3', 'hiragana'),
+('し', 'shi', 'Shi', 'audio/shi.mp3', 'hiragana'),
+('す', 'su', 'Su', 'audio/su.mp3', 'hiragana'),
+('せ', 'se', 'Se', 'audio/se.mp3', 'hiragana'),
+('そ', 'so', 'So', 'audio/so.mp3', 'hiragana'),
+
+('ざ', 'za', 'Za', 'audio/za.mp3', 'hiragana'),
+('じ', 'ji', 'Ji', 'audio/ji.mp3', 'hiragana'),
+('ず', 'zu', 'Zu', 'audio/zu.mp3', 'hiragana'),
+('ぜ', 'ze', 'Ze', 'audio/ze.mp3', 'hiragana'),
+('ぞ', 'zo', 'Zo', 'audio/zo.mp3', 'hiragana'),
+
+('た', 'ta', 'Ta', 'audio/ta.mp3', 'hiragana'),
+('ち', 'chi', 'Chi', 'audio/chi.mp3', 'hiragana'),
+('つ', 'tsu', 'Tsu', 'audio/tsu.mp3', 'hiragana'),
+('て', 'te', 'Te', 'audio/te.mp3', 'hiragana'),
+('と', 'to', 'To', 'audio/to.mp3', 'hiragana'),
+
+('だ', 'da', 'Da', 'audio/da.mp3', 'hiragana'),
+('ぢ', 'ji', 'Ji', 'audio/di.mp3', 'hiragana'),
+('づ', 'zu', 'Zu', 'audio/dzu.mp3', 'hiragana'),
+('で', 'de', 'De', 'audio/de.mp3', 'hiragana'),
+('ど', 'do', 'Do', 'audio/do.mp3', 'hiragana'),
+
+('な', 'na', 'Na', 'audio/na.mp3', 'hiragana'),
+('に', 'ni', 'Ni', 'audio/ni.mp3', 'hiragana'),
+('ぬ', 'nu', 'Nu', 'audio/nu.mp3', 'hiragana'),
+('ね', 'ne', 'Ne', 'audio/ne.mp3', 'hiragana'),
+('の', 'no', 'No', 'audio/no.mp3', 'hiragana'),
+
+('は', 'ha', 'Ha', 'audio/ha.mp3', 'hiragana'),
+('ひ', 'hi', 'Hi', 'audio/hi.mp3', 'hiragana'),
+('ふ', 'fu', 'Fu', 'audio/fu.mp3', 'hiragana'),
+('へ', 'he', 'He', 'audio/he.mp3', 'hiragana'),
+('ほ', 'ho', 'Ho', 'audio/ho.mp3', 'hiragana'),
+
+('ば', 'ba', 'Ba', 'audio/ba.mp3', 'hiragana'),
+('び', 'bi', 'Bi', 'audio/bi.mp3', 'hiragana'),
+('ぶ', 'bu', 'Bu', 'audio/bu.mp3', 'hiragana'),
+('べ', 'be', 'Be', 'audio/be.mp3', 'hiragana'),
+('ぼ', 'bo', 'Bo', 'audio/bo.mp3', 'hiragana'),
+
+('ぱ', 'pa', 'Pa', 'audio/pa.mp3', 'hiragana'),
+('ぴ', 'pi', 'Pi', 'audio/pi.mp3', 'hiragana'),
+('ぷ', 'pu', 'Pu', 'audio/pu.mp3', 'hiragana'),
+('ぺ', 'pe', 'Pe', 'audio/pe.mp3', 'hiragana'),
+('ぽ', 'po', 'Po', 'audio/po.mp3', 'hiragana'),
+
+('ま', 'ma', 'Ma', 'audio/ma.mp3', 'hiragana'),
+('み', 'mi', 'Mi', 'audio/mi.mp3', 'hiragana'),
+('む', 'mu', 'Mu', 'audio/mu.mp3', 'hiragana'),
+('め', 'me', 'Me', 'audio/me.mp3', 'hiragana'),
+('も', 'mo', 'Mo', 'audio/mo.mp3', 'hiragana'),
+
+('や', 'ya', 'Ya', 'audio/ya.mp3', 'hiragana'),
+('ゆ', 'yu', 'Yu', 'audio/yu.mp3', 'hiragana'),
+('よ', 'yo', 'Yo', 'audio/yo.mp3', 'hiragana'),
+
+('ら', 'ra', 'Ra', 'audio/ra.mp3', 'hiragana'),
+('り', 'ri', 'Ri', 'audio/ri.mp3', 'hiragana'),
+('る', 'ru', 'Ru', 'audio/ru.mp3', 'hiragana'),
+('れ', 're', 'Re', 'audio/re.mp3', 'hiragana'),
+('ろ', 'ro', 'Ro', 'audio/ro.mp3', 'hiragana'),
+
+('わ', 'wa', 'Wa', 'audio/wa.mp3', 'hiragana'),
+('を', 'wo', 'Wo', 'audio/wo.mp3', 'hiragana'),
+('ん', 'n', 'N', 'audio/n.mp3', 'hiragana'),
+
+
+('きゃ', 'kya', 'Kya', 'audio/kya.mp3', 'hiraganaCombi'),
+('きゅ', 'kyu', 'Kyu', 'audio/kyu.mp3', 'hiraganaCombi'),
+('きょ', 'kyo', 'Kyo', 'audio/kyo.mp3', 'hiraganaCombi'),
+
+('ぎゃ', 'gya', 'Gya', 'audio/gya.mp3', 'hiraganaCombi'),
+('ぎゅ', 'gyu', 'Gyu', 'audio/gyu.mp3', 'hiraganaCombi'),
+('ぎょ', 'gyo', 'Gyo', 'audio/gyo.mp3', 'hiraganaCombi'),
+
+('しゃ', 'sha', 'Sha', 'audio/sha.mp3', 'hiraganaCombi'),
+('しゅ', 'shu', 'Shu', 'audio/shu.mp3', 'hiraganaCombi'),
+('しょ', 'sho', 'Sho', 'audio/sho.mp3', 'hiraganaCombi'),
+
+('じゃ', 'ja', 'Ja', 'audio/ja.mp3', 'hiraganaCombi'),
+('じゅ', 'ju', 'Ju', 'audio/ju.mp3', 'hiraganaCombi'),
+('じょ', 'jo', 'Jo', 'audio/jo.mp3', 'hiraganaCombi'),
+
+('ちゃ', 'cha', 'Cha', 'audio/cha.mp3', 'hiraganaCombi'),
+('ちゅ', 'chu', 'Chu', 'audio/chu.mp3', 'hiraganaCombi'),
+('ちょ', 'cho', 'Cho', 'audio/cho.mp3', 'hiraganaCombi'),
+
+('にゃ', 'nya', 'Nya', 'audio/nya.mp3', 'hiraganaCombi'),
+('にゅ', 'nyu', 'Nyu', 'audio/nyu.mp3', 'hiraganaCombi'),
+('にょ', 'nyo', 'Nyo', 'audio/nyo.mp3', 'hiraganaCombi'),
+
+('ひゃ', 'hya', 'Hya', 'audio/hya.mp3', 'hiraganaCombi'),
+('ひゅ', 'hyu', 'Hyu', 'audio/hyu.mp3', 'hiraganaCombi'),
+('ひょ', 'hyo', 'Hyo', 'audio/hyo.mp3', 'hiraganaCombi'),
+
+('びゃ', 'bya', 'Bya', 'audio/bya.mp3', 'hiraganaCombi'),
+('びゅ', 'byu', 'Byu', 'audio/byu.mp3', 'hiraganaCombi'),
+('びょ', 'byo', 'Byo', 'audio/byo.mp3', 'hiraganaCombi'),
+
+('ぴゃ', 'pya', 'Pya', 'audio/pya.mp3', 'hiraganaCombi'),
+('ぴゅ', 'pyu', 'Pyu', 'audio/pyu.mp3', 'hiraganaCombi'),
+('ぴょ', 'pyo', 'Pyo', 'audio/pyo.mp3', 'hiraganaCombi'),
+
+('みゃ', 'mya', 'Mya', 'audio/mya.mp3', 'hiraganaCombi'),
+('みゅ', 'myu', 'Myu', 'audio/myu.mp3', 'hiraganaCombi'),
+('みょ', 'myo', 'Myo', 'audio/myo.mp3', 'hiraganaCombi'),
+
+('りゃ', 'rya', 'Rya', 'audio/rya.mp3', 'hiraganaCombi'),
+('りゅ', 'ryu', 'Ryu', 'audio/ryu.mp3', 'hiraganaCombi'),
+('りょ', 'ryo', 'Ryo', 'audio/ryo.mp3', 'hiraganaCombi'),
