@@ -33,7 +33,7 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden; /* w/o will cause flickers in the flip */
-    background: #f2dada;
+    background: #ffffff;
     color: rgb(0, 0, 0);
     text-align: center;
     font-family: 'zilla slab', sans-serif;
@@ -49,7 +49,7 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background: #f2dada;
+    background: #ffffff;
     color: rgb(0, 0, 0);
     transform: rotateY(180deg);/* back element flips to the front once we move the cursor away*/
     text-align: center;
