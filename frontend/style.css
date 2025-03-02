@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* adapts to different screen sizes */
+    margin: 0;
+}
+
+/* holds all of the elements and determines the size of the card */
+.maincontainer{
+    position: relative;
+    width: 250px;
+    height: 320px;
+}
+
+/* holds front and back elements, and controls mouse interaction via hover */
+.thecard{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; /* w/o this, the card only shows the reverse of the front card */
+    transition: all 0.5s ease; /* smooth animation flip*/
+}
+
+/* controls the flip */
+.thecard:hover{
+    transform: rotateY(180deg);
+}
+
+/* default face */
+.thefront{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* w/o will cause flickers in the flip */
+    background: #ffc728;
+    color: #333;
+    text-align: center;
+    font-family: 'zilla slab', sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* reverse side of the card, shows the flip side */
+.theback{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background: #5fcf80;
+    color: #fff;
+    transform: rotateY(180deg);/* back element flips to the front once we move the cursor away*/
+    text-align: center;
+    font-family: 'zilla slab', sans-serif;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
