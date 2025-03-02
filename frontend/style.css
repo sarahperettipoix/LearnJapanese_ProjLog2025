@@ -40,7 +40,7 @@ body {
     border-radius: 20px;
     font-size: 25px;
     font-weight: bold;
-    box-shadow: 4px 12px 40px 6px rgba(0, 0, 0, 09);
+    box-shadow: 2px 6px 20px 3px rgba(0, 0, 0, 0.9);
 }
 
 /* reverse side of the card, shows the flip side */
@@ -57,7 +57,7 @@ body {
     border-radius: 20px;
     font-size: 25px;
     font-weight: bold;
-    box-shadow: 4px 12px 40px 6px rgba(0, 0, 0, 09);
+    box-shadow: 2px 6px 20px 3px rgba(0, 0, 0, 0.9);
 }
 
 /* button{
@@ -71,9 +71,11 @@ body {
     color: black;
     border-radius: 5px;
 } */
-#next{
-    margin-top: 370px;
-    margin-left: 425px;
+#next, #pronunciation{
+    /* margin-top: 370px;
+    margin-left: 425px; */
+    position: absolute;
+    bottom: -120px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -81,6 +83,12 @@ body {
     background-color: rgb(195, 187, 187);
     color: black;
     border-radius: 5px;
+}
+#next{
+    right: 0;
+}
+#pronunciation{
+    right: 360px;
 }
 #favourite{
     margin-bottom: 15px;
