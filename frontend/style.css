@@ -59,3 +59,36 @@ body {
     font-weight: bold;
     box-shadow: 4px 12px 40px 6px rgba(0, 0, 0, 09);
 }
+
+/* button{
+    margin-top: 370px;
+    margin-left: 425px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(195, 187, 187);
+    color: black;
+    border-radius: 5px;
+} */
+#next{
+    margin-top: 370px;
+    margin-left: 425px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(195, 187, 187);
+    color: black;
+    border-radius: 5px;
+}
+#favourite{
+    margin-bottom: 15px;
+    margin-left: 400px;
+    background-color: gold;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
