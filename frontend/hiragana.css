@@ -1,0 +1,122 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+/* navbar */
+ul{
+    list-style: none;
+    background: rgb(193, 216, 195);
+    display: flex;
+    padding: 10px;
+}
+.left {
+    margin-right: auto;
+    display: block;
+    padding: 20px 25px;
+    color: #ffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+}
+ul li{
+    display: inline-block;
+}
+ul li a{
+    display: block;
+    padding: 20px 25px;
+    color: #ffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+}
+ul li a:hover{
+    background:  rgb(156, 189, 159);
+}
+
+/* footer */
+footer{
+    background: rgb(193, 216, 195);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    overflow: auto;
+}
+footer p{
+    width: 23%; /* each fourth (4 sections) */
+    margin: 0;
+    overflow: auto;
+    padding: 20px 25px;
+}
+footer p a:hover{
+    background:  rgb(156, 189, 159);
+}
+a:link {
+    text-decoration: none;
+}
+a {
+    color: white;
+}
+
+.circle {
+   /*  width: 15vw;
+    height: 15vw;
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 100px;
+    min-height: 100px; */
+    /* border-radius: 20%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(158, 225, 193, 1);
+}
+.n1, .n2, .n3, .n4 {
+    width: 20vw;
+    height: 9vw;
+    border-radius: 5%;
+}
+.n5 {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 20%;
+}
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    margin: 20px auto;
+    height: 100vh;
+}
+/* .left_text, .right_text {
+    flex: 1; */ /* Allows each div to take up equal space */
+    /* min-width: 300px; */ /* Ensures proper layout on small screens */
+    /* padding: 20px;
+    text-align: center; */
+    /* background-color: #f4f4f4; */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    /* color: black;
+} */
+
+h1{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-top: 50px;
+}
+p{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
