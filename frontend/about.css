@@ -60,3 +60,38 @@ a:link {
 a {
     color: white;
 }
+
+/* our names */
+.names {
+    display: flex;
+    gap: 200px;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+}
+.circle {
+    width: 15vw;
+    height: 15vw;
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.sarah {
+    background-color: rgb(230, 228, 228);
+}
+.virgile {
+    background-color: rgb(230, 228, 228);
+}
+.sophie {
+    background-color: rgb(230, 228, 228);
+}
+.orsowen {
+    background-color: rgb(230, 228, 228);
+}
