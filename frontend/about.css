@@ -69,6 +69,7 @@ a {
     align-items: center;
     padding: 5vw;
     flex-wrap: wrap;
+    /* height: 100vh; to ensure it takes up whole screen*/
 }
 .circle {
     width: 15vw;
@@ -77,7 +78,7 @@ a {
     max-height: 150px;
     min-width: 100px;
     min-height: 100px;
-    border-radius: 50%;
+    border-radius: 20%; /* for nice circle: 50%*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,18 +86,35 @@ a {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .sarah {
-    background-color: rgb(230, 228, 228);
+    background-color: #f4f4f4;
 }
 .virgile {
-    background-color: rgb(230, 228, 228);
+    background-color: #f4f4f4;
 }
 .sophie {
-    background-color: rgb(230, 228, 228);
+    background-color: #f4f4f4;
 }
 .orsowen {
-    background-color: rgb(230, 228, 228);
+    background-color: #f4f4f4;
 }
 
 h1{
+    text-align: center;
+}
+/* text */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    margin: 20px auto;
+    /* height: 100vh; */
+}
+.centered{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f4;
+    padding: 20px;
     text-align: center;
 }
