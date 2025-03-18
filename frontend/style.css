@@ -85,10 +85,11 @@ a {
 
 .writing {
     display: flex;
-    gap: 200px;
+    gap: 5vw;
     justify-content: center;
     align-items: center;
-    padding: 100px;
+    padding: 5vw;
+    flex-wrap: wrap;
 }
 .circle {
     width: 15vw;

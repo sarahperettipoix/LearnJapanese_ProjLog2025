@@ -64,10 +64,11 @@ a {
 /* our names */
 .names {
     display: flex;
-    gap: 200px;
+    gap: 5vw;
     justify-content: center;
     align-items: center;
-    padding: 100px;
+    padding: 5vw;
+    flex-wrap: wrap;
 }
 .circle {
     width: 15vw;
@@ -94,4 +95,8 @@ a {
 }
 .orsowen {
     background-color: rgb(230, 228, 228);
+}
+
+h1{
+    text-align: center;
 }
