@@ -85,6 +85,13 @@ a {
 
 .writing {
     display: flex;
+    gap: 5vw; /* flexible spacing */
+    justify-content: center;
+    align-items: center;
+    padding: 5vw;/* adaptive padding */
+    flex-wrap: wrap; /* ensures responsiveness */
+}
+/* ChatGPT: how to keep names and their circles keep their form and adapt to screen size? https://chatgpt.com/share/67d974cc-0ac0-8000-8be0-c7f9b20d7eae */
     gap: 200px;
     justify-content: center;
     align-items: center;

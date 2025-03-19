@@ -59,50 +59,36 @@ a:link {
 }
 a {
     color: white;
-
 }
 
-/* our names */
-.names {
-    display: flex;
-    gap: 5vw;
-    justify-content: center;
-    align-items: center;
-    padding: 5vw;
-    flex-wrap: wrap;
-    /* height: 100vh; to ensure it takes up whole screen*/
-}
 .circle {
-    width: 15vw;
+   /*  width: 15vw;
     height: 15vw;
     max-width: 150px;
     max-height: 150px;
     min-width: 100px;
-    min-height: 100px;
-    border-radius: 20%; /* for nice circle: 50%*/
+    min-height: 100px; */
+    /* border-radius: 20%; */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 18px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(158, 225, 193, 1);
 }
-.sarah {
-    background-color: #f4f4f4;
+/* enlever n2 */
+.n1, .n2, .n3, .n4 {
+    width: 20vw;
+    height: 9vw;
+    border-radius: 5%;
 }
-.virgile {
-    background-color: #f4f4f4;
-}
-.sophie {
-    background-color: #f4f4f4;
-}
-.orsowen {
-    background-color: #f4f4f4;
+.n5 {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 20%;
 }
 
-h1{
-    text-align: center;
-}
-/* text */
+
 .container {
     display: flex;
     flex-wrap: wrap; /* Ensures responsiveness */
@@ -111,11 +97,27 @@ h1{
     gap: 20px;
     width: 80%;
     margin: 20px auto;
-    /* height: 100vh; */
+    height: 100vh;
 }
-.text{
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #f4f4f4;
-    padding: 20px;
-    text-align: center;
+/* .left_text, .right_text {
+    flex: 1; */ /* Allows each div to take up equal space */
+    /* min-width: 300px; */ /* Ensures proper layout on small screens */
+    /* padding: 20px;
+    text-align: center; */
+    /* background-color: #f4f4f4; */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    /* color: black;
+} */
+
+h1{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-top: 50px;
+}
+p{
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
