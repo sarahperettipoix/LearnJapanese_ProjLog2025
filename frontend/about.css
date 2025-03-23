@@ -109,7 +109,7 @@ h1{
     justify-content: center;
     align-items: center;
     gap: 20px;
-    width: 80%;
+    width: 65%;
     margin: 20px auto;
     /* height: 100vh; */
 }
@@ -118,4 +118,8 @@ h1{
     background-color: #f4f4f4;
     padding: 20px;
     text-align: center;
+}
+.about{
+    height: 100vh;
+    padding-top: 50px;
 }

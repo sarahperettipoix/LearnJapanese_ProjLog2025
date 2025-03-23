@@ -41,6 +41,9 @@ footer{
     justify-content: space-between;
     margin: 0;
     overflow: auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 footer p{
     width: 23%; /* each fourth (4 sections) */
@@ -58,6 +61,7 @@ a {
     color: rgb(255, 255, 255);
 }
 
+/* button size and space on page*/
 .dropdown{
     display: flex;
     justify-content: center;
@@ -67,34 +71,36 @@ a {
     position: relative;
     margin: 2em;
 }
+/* the button itself */
 .dropdown * {
     box-sizing: border-box;
 }
 .select {
-    background: pink;
-    color: #ffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgb(193, 216, 195);
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px #2a2f3b solid;
+    border: 2px rgb(148, 218, 154) solid;
     border-radius: 0.5em;
     padding: 1em;
     cursor: pointer;
     transition: 0.3s;
 }
 .select-clicked {
-    border: 2px #26489a solid;
-    box-shadow: 0 0 0.8em #26489a;
+    border: 2px rgb(193, 216, 195) solid;
+    box-shadow: 0 0 0.8em rgb(116, 223, 125);
 }
 .select:hover{
-    background: #323741;
+    background: rgb(193, 216, 195);
 }
 .caret {
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 6px solid #fff;
+    border-top: 6px solid rgb(255, 255, 255);
     transition: 0.3s;
 }
 .caret-rotate {
@@ -125,10 +131,10 @@ a {
     cursor: pointer;
 }
 .menu li:hover{
-    background: #2a2d35;
+    background: #83d382; /* list colour */
 }
 .active{
-    background: #23242a;
+    background: #83d382; /* mhmm */
 }
 .menu-open{
     display: block;
