@@ -18,9 +18,38 @@
             <li><a href="login.html">Login</a></li>
         </ul>
     </nav>
-    <div class="title">
-        <h1>Login</h1>
+    
+    <div class="image-container">
+        <img src="image/background.png" alt="Japanese">
     </div>
+    <!-- login -->
+    <div class="container">
+        <div class="form-box">
+           <h1 id="title">Sign Up</h1>
+           <form action="">
+            <div class="input-group">
+                <div class="input-field" id="nameField">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password">
+                </div>
+                <p>Forget Password <a href="#">Click Here!</a></p>
+            </div>
+               <div class="btn-field">
+                <button type="button" id="signupBtn">Sign up</button>
+                <button type="button" id="signinBtn" class="disable">Sign in</button>
+               </div> 
+           </form>
+        </div>
+      </div> 
+    
     <footer>
         <p><a href="index.html">Home</a></p>
         <p><a href="about.html">About us</a></p>
@@ -29,5 +58,6 @@
         <p><a href="login.html">Login</a></p>
         <p>©2025 Projet de Développement Logiciel | All rights reserved</p>
     </footer>
+    <script src="login.js"></script>
 </body>
 </html>
