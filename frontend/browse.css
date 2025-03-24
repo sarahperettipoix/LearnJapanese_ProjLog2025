@@ -41,9 +41,6 @@ footer{
     justify-content: space-between;
     margin: 0;
     overflow: auto;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 footer p{
     width: 23%; /* each fourth (4 sections) */
@@ -106,7 +103,11 @@ a {
 .caret-rotate {
     transform: rotate(180deg);
 }
-.menu{
+/* div background expands with the menu */
+/* how can i do it so the grey div background expands as the dropdown menu expands?
+https://chatgpt.com/share/67e117c1-2834-8000-8361-31e2310a7b30
+*/
+.menu {
     list-style: none;
     padding: 0.2em 0.5em;
     background: #b6e1b5;
@@ -114,15 +115,12 @@ a {
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
     border-radius: 0.5em;
     color: #9fa5b5;
-    position: absolute;
-    top: 3em;
-    left: 50%;
-    width: 30%;
-    transform: translateX(-50%);
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
-    display: none;
-    transition: 0.2s;
-    z-index: 1;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    margin-top: 10px;
 }
 .menu li{
     padding: 0.7em 0.5em;
@@ -136,7 +134,35 @@ a {
 .active{
     background: #83d382; /* mhmm */
 }
-.menu-open{
-    display: block;
+.menu-open {
+    max-height: 200px; /* Adjust based on content */
     opacity: 1;
 }
+
+/* trying like learn.css */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    margin: 20px auto;
+    height: 100vh;
+}
+.left_text, .right_text {
+    flex: 1; /* Allows each div to take up equal space */
+    min-width: 300px; /* Ensures proper layout on small screens */
+    padding: 20px;
+    text-align: center;
+    /* background-color: #f4f4f4; */
+    border-radius: 10px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    color: black;
+}
+.left_text{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f4;
+}
+/* https://chatgpt.com/c/67cd78ce-7504-8000-ab74-f4b92999694b : how to put both of these texts side by side on a screen and that it adapts to the screen size? */
+/* https://www.w3schools.com/howto/howto_css_split_screen.asp */
