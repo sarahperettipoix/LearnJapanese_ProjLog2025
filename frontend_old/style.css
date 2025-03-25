@@ -61,51 +61,34 @@ a {
     color: white;
 }
 
-/* .left_text {
-    color: black;
-}
-.right_text {
-    color: black;
+/* image */
+/* .image-container img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 } */
 
-.container {
+.title {
+    text-align: center;
+    padding: 0;
+    height: 100vh;
     display: flex;
-    flex-wrap: wrap; /* Ensures responsiveness */
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    width: 80%;
-    margin: 20px auto;
-    height: 100vh;
+    color: rgb(0, 0, 0);
 }
-.left_text, .right_text {
-    flex: 1; /* Allows each div to take up equal space */
-    min-width: 300px; /* Ensures proper layout on small screens */
-    padding: 20px;
-    text-align: center;
-    /* background-color: #f4f4f4; */
-    border-radius: 10px;
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    color: black;
-}
-.left_text{
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #f4f4f4;
-}
-/* https://chatgpt.com/c/67cd78ce-7504-8000-ab74-f4b92999694b : how to put both of these texts side by side on a screen and that it adapts to the screen size? */
-/* https://www.w3schools.com/howto/howto_css_split_screen.asp */
-
-.japanese {
-    font-size: 100px;
-    color: rgba(228, 220, 207, 1);
+/* https://www.geeksforgeeks.org/how-to-center-text-horizontally-and-vertically-inside-a-div-block-in-css/ */
+.title:hover{
+    color: rgb(193, 216, 195);
+   transition: 2s;
 }
 
 .writing {
     display: flex;
-    gap: 5vw; /* flexible spacing */
+    gap: 200px;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding: 100px;
 }
 .circle {
     width: 15vw;

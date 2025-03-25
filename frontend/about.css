@@ -59,4 +59,73 @@ a:link {
 }
 a {
     color: white;
+
+}
+
+/* our names */
+.names {
+    display: flex;
+    gap: 5vw;
+    justify-content: center;
+    align-items: center;
+    padding: 5vw;
+    flex-wrap: wrap;
+    /* height: 100vh; to ensure it takes up whole screen*/
+}
+.circle {
+    width: 15vw;
+    height: 15vw;
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 20%; /* for nice circle: 50%*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.sarah {
+    background-color: #f4f4f4;
+}
+.virgile {
+    background-color: #f4f4f4;
+}
+.sophie {
+    background-color: #f4f4f4;
+}
+.orsowen {
+    background-color: #f4f4f4;
+}
+
+h1{
+    text-align: center;
+}
+/* text */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 65%;
+    margin: 20px auto;
+    /* height: 100vh; */
+}
+.text{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    max-width: 100%; /* Ensures it doesn’t overflow */
+    margin-bottom: 50px; /* Adjust as needed */
+    overflow-wrap: break-word; /* Ensures text wraps */
+    word-break: break-word;
+    margin-bottom: 50px; /* Prevents overlap with footer */
+}
+.about{
+    height: 100vh;
+    padding-top: 50px;
 }

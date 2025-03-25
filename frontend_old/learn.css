@@ -102,7 +102,7 @@ a {
 
 .writing {
     display: flex;
-    gap: 5vw; /* flexible spacing */
+    gap: 200px;
     justify-content: center;
     align-items: center;
     padding: 50px;

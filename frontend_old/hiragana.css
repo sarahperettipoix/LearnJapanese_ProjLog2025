@@ -61,12 +61,33 @@ a {
     color: white;
 }
 
-/* .left_text {
-    color: black;
+.circle {
+   /*  width: 15vw;
+    height: 15vw;
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 100px;
+    min-height: 100px; */
+    /* border-radius: 20%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(158, 225, 193, 1);
 }
-.right_text {
-    color: black;
-} */
+/* enlever n2 */
+.n1, .n2, .n3, .n4 {
+    width: 20vw;
+    height: 9vw;
+    border-radius: 5%;
+}
+.n5 {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 20%;
+}
+
 
 .container {
     display: flex;
@@ -78,56 +99,25 @@ a {
     margin: 20px auto;
     height: 100vh;
 }
-.left_text, .right_text {
-    flex: 1; /* Allows each div to take up equal space */
-    min-width: 300px; /* Ensures proper layout on small screens */
-    padding: 20px;
-    text-align: center;
+/* .left_text, .right_text {
+    flex: 1; */ /* Allows each div to take up equal space */
+    /* min-width: 300px; */ /* Ensures proper layout on small screens */
+    /* padding: 20px;
+    text-align: center; */
     /* background-color: #f4f4f4; */
-    border-radius: 10px;
+    /* border-radius: 10px; */
     /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    color: black;
-}
-.left_text{
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #f4f4f4;
-}
-/* https://chatgpt.com/c/67cd78ce-7504-8000-ab74-f4b92999694b : how to put both of these texts side by side on a screen and that it adapts to the screen size? */
-/* https://www.w3schools.com/howto/howto_css_split_screen.asp */
+    /* color: black;
+} */
 
-.japanese {
-    font-size: 100px;
-    color: rgba(228, 220, 207, 1);
-}
-
-.writing {
-    display: flex;
-    gap: 5vw; /* flexible spacing */
+h1{
     justify-content: center;
     align-items: center;
-    padding: 50px;
-}
-.circle {
-    width: 15vw;
-    height: 15vw;
-    max-width: 150px;
-    max-height: 150px;
-    min-width: 100px;
-    min-height: 100px;
-    border-radius: 50%;
     display: flex;
+    padding-top: 50px;
+}
+p{
     justify-content: center;
     align-items: center;
-    font-size: 18px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-/* https://chatgpt.com/c/67cd78ce-7504-8000-ab74-f4b92999694b : how to make it keep the circle shape when the screen changes? */
-.hiragana {
-    background-color: rgba(158, 225, 193, 1);
-}
-.katakana {
-    background-color: rgba(172, 225, 175, 1);
-}
-.kanji {
-    background-color: rgba(143, 188, 139, 1);
+    display: flex;
 }
