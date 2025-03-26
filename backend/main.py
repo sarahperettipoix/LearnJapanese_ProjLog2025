@@ -2,21 +2,9 @@
 import json
 from dataclasses import dataclass, field
 from fastapi import Response, FastAPI, HTTPException
+from user import *
 
 app = FastAPI()
-#user class (name password)
-@dataclass
-class User:
-    username: str
-    password: str
-
-users: dict[str, User] = {}
-
-with open("db/user.json", encoding="utf8") as file:
-    users_raw = json.load(file) #kanjis_raw = structure JSON
-    for user_raw in users_raw:
-        user = User(**user_raw)
-        users[user.username] = user
 
 @dataclass
 class Kanji:
@@ -68,13 +56,6 @@ with open("db/katakana.json", encoding="utf8") as file:
 def read_root() ->Response:
     return Response("The server is running.")
 
-@app.get("/login/{username}/{password}", response_model=User)
-def read_user(username: str, password: str) -> User:
-    if username not in users:
-        raise HTTPException(status_code=404, detail="Username not found")
-    if password != users[username].password:
-        raise HTTPException(status_code=404, detail="Wrong password")
-    return users[username]
 
 #what frontend will have to do
 @app.get("/kanji/{kanji_id}", response_model=Kanji)
@@ -94,6 +75,15 @@ def read_katakana(katakana_id: str) -> Katakana:
     if katakana_id not in katakanas:
         raise HTTPException(status_code=404, detail="Katakana not found")
     return katakanas[katakana_id]
+
+
+@app.get("/exists/{username}", response_model=str)
+def read_username(username: str):
+    u = User()
+    if u.username_exists(username):
+        return "valid username", username
+    raise HTTPException(status_code=404, detail="Username not found")
+
 
 """@app.get("/hello/{name}")
 def read_hello(name: str) ->Response:
