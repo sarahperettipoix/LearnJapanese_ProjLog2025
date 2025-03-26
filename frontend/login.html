@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="left">LEARN JAPANESE</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="browse.html">Browse</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    
+    <div class="image-container">
+        <img src="image/background.png" alt="Japanese">
+    </div>
+    <!-- login -->
+    <div class="container">
+        <div class="form-box">
+           <h1 id="title">Sign Up</h1>
+           <form action="">
+            <div class="input-group">
+                <div class="input-field" id="nameField">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password">
+                </div>
+                <p>Forget Password <a href="#">Click Here!</a></p>
+            </div>
+               <div class="btn-field">
+                <button type="button" id="signupBtn">Sign up</button>
+                <button type="button" id="signinBtn" class="disable">Login in</button>
+               </div> 
+           </form>
+        </div>
+    </div> 
+    
+    <footer>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="about.html">About us</a></p>
+        <p><a href="learn.html">Learn</a></p>
+        <p><a href="browse.html">Browse</a></p>
+        <p><a href="login.html">Login</a></p>
+        <p>©2025 Projet de Développement Logiciel | All rights reserved</p>
+    </footer>
+    <script src="login.js"></script>
+</body>
+</html>
