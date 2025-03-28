@@ -99,16 +99,6 @@ a {
     margin: 20px auto;
     height: 100vh;
 }
-/* .left_text, .right_text {
-    flex: 1; */ /* Allows each div to take up equal space */
-    /* min-width: 300px; */ /* Ensures proper layout on small screens */
-    /* padding: 20px;
-    text-align: center; */
-    /* background-color: #f4f4f4; */
-    /* border-radius: 10px; */
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-    /* color: black;
-} */
 
 h1{
     justify-content: center;
