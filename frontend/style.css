@@ -61,21 +61,22 @@ a {
     color: white;
 }
 
-/* image */
-/* .image-container img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
+.page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Ensure text inside is centered */
+}
 
 .title {
+    color: rgb(0, 0, 0);
     text-align: center;
-    padding: 0;
-    height: 100vh;
+    padding: 5vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(0, 0, 0);
 }
 /* https://www.geeksforgeeks.org/how-to-center-text-horizontally-and-vertically-inside-a-div-block-in-css/ */
 .title:hover{
