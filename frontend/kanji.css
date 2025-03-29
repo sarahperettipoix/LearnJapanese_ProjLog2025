@@ -161,11 +161,22 @@ h1{
     align-items: center;
     display: flex;
     padding-top: 50px;
+    text-align: center;
 }
 p{
     justify-content: center;
     align-items: center;
     display: flex;
+    text-align: center;
+}
+.centered {
+    display: flex;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 50%;
+    margin: 20px auto;
 }
 
 /* image */
