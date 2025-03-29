@@ -34,6 +34,7 @@ hiraganas: dict[str, Hiragana] = {}
 #put in file path to JSON
 with open("db/hiragana.json", encoding="utf8") as file:
     hiraganas_raw = json.load(file)
+    #uses line as separartion to iterate on text file (hiragana raws)
     for hiragana_raw in hiraganas_raw:
         hiragana = Hiragana(**hiragana_raw)
         hiraganas[hiragana.id] = hiragana
@@ -78,12 +79,20 @@ def read_katakana(katakana_id: str) -> Katakana:
 
 
 @app.get("/exists/{username}", response_model=str)
-def read_username(username: str):
-    u = User()
-    if u.username_exists(username):
-        return "valid username", username
+def read_username(username: str) ->Response:
+    u = User(username=username)
+    if u.username_exists():
+        return Response("valid username: " + username)
     raise HTTPException(status_code=404, detail="Username not found")
 
+#post for user sending info
+@app.post("/user/add", response_model=User)
+def user_add(user: User) -> User:
+    try:
+        user.add()
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=f"{e}") #returns error message of ValueError of user.py
+    return user
 
 """@app.get("/hello/{name}")
 def read_hello(name: str) ->Response:
