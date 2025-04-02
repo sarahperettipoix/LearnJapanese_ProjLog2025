@@ -101,3 +101,16 @@ def read_hello(name: str) ->Response:
 @app.get("/hello")
 def read_hello() ->Response:
     return Response("hello world")"""
+
+# Soph attempt with flashcard
+@app.put("/user/{username}/favorites")
+def add_favorite(username: str, flashcard_id: str):
+    # Simulate fetching the user (replace with DB logic)
+    user = User(username=username, password="dummy", favorites=[])
+
+    try:
+        user.add_to_favorites(flashcard_id)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    return {"message": f"Flashcard {flashcard_id} added to {username}'s favorites"}
