@@ -47,11 +47,10 @@ class User:
         else:
             raise ValueError("Flashcard already in favorites")
 
-
 users: dict[str, User] = {}
 
 def load_userDB():
-    with open("db/user.json", encoding="utf8") as file:
+    with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/user.json", encoding="utf8") as file:
         users_raw = json.load(file)
         for user_raw in users_raw:
             user = User(**user_raw)
@@ -68,6 +67,9 @@ def save_userDB():
 
 load_userDB()
 
+if __name__ == "__main__":
+    print("Loaded users:", users)
+
 """
 @app.get("/login/{username}/{password}", response_model=User)
 def read_user(username: str, password: str) -> User:
@@ -76,6 +78,7 @@ def read_user(username: str, password: str) -> User:
     if password != users[username].password:
         raise HTTPException(status_code=404, detail="Wrong password")
     return users[username]"""
+
 """ test_user = User(username="sophie", password="123456")
 test_user.add()
 test_user.add_favorite("日") """

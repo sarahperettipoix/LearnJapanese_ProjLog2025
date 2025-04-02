@@ -1,11 +1,34 @@
+""" Soph problems: had to change with open file path """
+# Soph: backend built using FastAPI
 #getting info for the frontend, heart of the backend
 import json
+# Soph: define objects hiragana, kata, kanji
 from dataclasses import dataclass, field
+# Soph: Response + HTTP - send responses and handle errors
 from fastapi import Response, FastAPI, HTTPException
+# Soph: imports everything from user.py
 from user import *
+# Soph attempt with flashcard
+from fastapi.middleware.cors import CORSMiddleware
 
+# Soph: FastAPI
+# Soph: provides API that allows frontend app to access data on kanji, hiragana, kata
+# and user info
+# initialise
 app = FastAPI()
 
+# Soph attempt with flashcard
+# Enable CORS for frontend requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (change this in production)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
+""" source: https://chatgpt.com/share/67e934b3-8d1c-8000-a753-d046cbaebc30 """
+
+# Soph: loading kanji data from json
 @dataclass
 class Kanji:
     id: int
@@ -15,10 +38,11 @@ class Kanji:
     meaning: str
     JLPT: str
 
+# Soph: dict to store kanji data
 kanjis: dict[int, Kanji] = {}
 
 #put in file path to JSON
-with open("db/kanjis.json", encoding="utf8") as file:
+with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/kanjis.json", encoding="utf8") as file:
     kanjis_raw = json.load(file) #kanjis_raw = structure JSON
     for kanji_raw in kanjis_raw:
         kanji = Kanji(**kanji_raw)
@@ -32,7 +56,7 @@ class Hiragana:
 hiraganas: dict[str, Hiragana] = {}
 
 #put in file path to JSON
-with open("db/hiragana.json", encoding="utf8") as file:
+with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/hiragana.json", encoding="utf8") as file:
     hiraganas_raw = json.load(file)
     #uses line as separartion to iterate on text file (hiragana raws)
     for hiragana_raw in hiraganas_raw:
@@ -47,17 +71,21 @@ class Katakana:
 katakanas: dict[str, Katakana] = {}
 
 #put in file path to JSON
-with open("db/katakana.json", encoding="utf8") as file:
+with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/katakana.json", encoding="utf8") as file:
     katakanas_raw = json.load(file)
     for katakana_raw in katakanas_raw:
         katakana = Katakana(**katakana_raw)
         katakanas[katakana.id] = katakana
 
+# Soph: basic server check
+# when user visits /, server responds with "The server is running"
+# this confirms API is active
 @app.get("/") #ask server to get sthg for u
 def read_root() ->Response:
     return Response("The server is running.")
 
-
+# Soph: retrieves kanji details by id
+# if id not found, 404 error
 #what frontend will have to do
 @app.get("/kanji/{kanji_id}", response_model=Kanji)
 def read_kanji(kanji_id: int) -> Kanji:
@@ -77,7 +105,7 @@ def read_katakana(katakana_id: str) -> Katakana:
         raise HTTPException(status_code=404, detail="Katakana not found")
     return katakanas[katakana_id]
 
-
+# Soph: check if a username exists
 @app.get("/exists/{username}", response_model=str)
 def read_username(username: str) ->Response:
     u = User(username=username)
@@ -85,6 +113,7 @@ def read_username(username: str) ->Response:
         return Response("valid username: " + username)
     raise HTTPException(status_code=404, detail="Username not found")
 
+# Soph: adding a new user
 #post for user sending info
 @app.post("/user/add", response_model=User)
 def user_add(user: User) -> User:
