@@ -55,24 +55,28 @@ with open("db/katakana.json", encoding="utf8") as file:
 
 @app.get("/") #ask server to get sthg for u
 def read_root() ->Response:
+    """return server running"""
     return Response("The server is running.")
 
 
 #what frontend will have to do
 @app.get("/kanji/{kanji_id}", response_model=Kanji)
 def read_kanji(kanji_id: int) -> Kanji:
+    """return knajis based on kanji id"""
     if kanji_id not in kanjis:
         raise HTTPException(status_code=404, detail="Kanji not found")
     return kanjis[kanji_id]
 
 @app.get("/hiragana/{hiragana_id}", response_model=Hiragana)
 def read_hiragana(hiragana_id: str) -> Hiragana:
+    """return hiraganas based on hiragana id"""
     if hiragana_id not in hiraganas:
         raise HTTPException(status_code=404, detail="Hiragana not found")
     return hiraganas[hiragana_id]
 
 @app.get("/katakana/{katakana_id}", response_model=Katakana)
 def read_katakana(katakana_id: str) -> Katakana:
+    """return katakanas based on katakana id"""
     if katakana_id not in katakanas:
         raise HTTPException(status_code=404, detail="Katakana not found")
     return katakanas[katakana_id]
@@ -80,6 +84,7 @@ def read_katakana(katakana_id: str) -> Katakana:
 
 @app.get("/exists/{username}", response_model=str)
 def read_username(username: str) ->Response:
+    """return username if username exist."""
     u = User(username=username)
     if u.username_exists():
         return Response("valid username: " + username)
@@ -88,16 +93,9 @@ def read_username(username: str) ->Response:
 #post for user sending info
 @app.post("/user/add", response_model=User)
 def user_add(user: User) -> User:
+    """add new user."""
     try:
         user.add()
     except ValueError as e:
         raise HTTPException(status_code=400, detail=f"{e}") #returns error message of ValueError of user.py
     return user
-
-"""@app.get("/hello/{name}")
-def read_hello(name: str) ->Response:
-    return Response("hello " + name)
-
-@app.get("/hello")
-def read_hello() ->Response:
-    return Response("hello world")"""
