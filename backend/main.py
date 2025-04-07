@@ -1,8 +1,9 @@
 #getting info for the frontend, heart of the backend
 import json
 from dataclasses import dataclass, field
-from fastapi import Response, FastAPI, HTTPException, Query
+from fastapi import Response, FastAPI, HTTPException, Query, Cookie
 from user import *
+from typing import Annotated
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -109,7 +110,7 @@ def user_add(user: User) -> User:
     return user
 
 
-class FavoriteRequest(BaseModel):
+"""class FavoriteRequest(BaseModel):
     username: str
     character: str
 
@@ -123,7 +124,12 @@ def favorite(request: FavoriteRequest):
 @app.get("/favorites")
 def favorites(username: str = Query(..., description="Username to retrieve favorites for")):
     favorites_list = get_favorites(username)
-    return {"username": username, "favorites": favorites_list}
+    return {"username": username, "favorites": favorites_list}"""
+
+#cookies
+@app.get("/items/")
+async def read_items(ads_id: Annotated[str | None, Cookie()] = None):
+    return {"ads_id": ads_id}
 
 if __name__ == '__main__':
     app.run(debug=True)

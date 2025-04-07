@@ -2,16 +2,6 @@
 import json
 from dataclasses import dataclass, field
 
-
-"""def load_users():
-    with open(USER_DB_PATH, 'r', encoding='utf-8') as f:
-        return json.load(f)"""
-
-"""def save_users(users):
-    with open(USER_DB_PATH, 'w', encoding='utf-8') as f:
-        json.dump(users, f, indent=4)"""
-
-
 # user class (name, password)
 @dataclass
 class User:
@@ -68,7 +58,7 @@ def save_userDB():
         #Writing to user.json
         file.write(json_object)
 
-def add_favorite(username, character):
+"""def add_favorite(username, character):
     usersDB = load_userDB()
     for user in users:
         if user['username'] == username:
@@ -84,7 +74,7 @@ def get_favorites(username):
     for user in usersDB:
         if user['username'] == username:
             return user.get('favorites', [])
-    return []
+    return []"""
 
 load_userDB()
 
