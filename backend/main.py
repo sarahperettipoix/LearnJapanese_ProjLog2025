@@ -66,7 +66,7 @@ with open("db/katakana.json", encoding="utf8") as file:
 async def home(request: Request):
     """return server running"""
     message = "Bienvenue sur ma page avec FastAPI et Jinja2!"
-    return templates.TemplateResponse("flashcard.html", {"request": request, "message": message})
+    return templates.TemplateResponse("index.html", {"request": request, "message": message})
 
 
 #what frontend will have to do
