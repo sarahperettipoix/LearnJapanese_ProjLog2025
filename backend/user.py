@@ -2,15 +2,32 @@
 import json
 from dataclasses import dataclass, field
 
+
+"""def load_users():
+    with open(USER_DB_PATH, 'r', encoding='utf-8') as f:
+        return json.load(f)"""
+
+"""def save_users(users):
+    with open(USER_DB_PATH, 'w', encoding='utf-8') as f:
+        json.dump(users, f, indent=4)"""
+
+
 # user class (name, password)
 @dataclass
 class User:
     username: str
     password: str = "" #default value
+    favorites: list[str] = field(default_factory=list)
 
     def username_exists(self) -> bool:
         """checks if username exists."""
         if self.username in users:
+            return True
+        return False
+
+    def favorites_exists(self) -> bool:
+        """checks if username exists."""
+        if self.favorites is not None:
             return True
         return False
 
@@ -50,6 +67,24 @@ def save_userDB():
         json_object = json.dumps(users_list, indent=2)
         #Writing to user.json
         file.write(json_object)
+
+def add_favorite(username, character):
+    usersDB = load_userDB()
+    for user in users:
+        if user['username'] == username:
+            if 'favorites' not in user:
+                user['favorites'] = []
+            if character not in user['favorites']:
+                user['favorites'].append(character)
+            break
+    save_userDB(usersDB)
+
+def get_favorites(username):
+    usersDB = load_userDB()
+    for user in usersDB:
+        if user['username'] == username:
+            return user.get('favorites', [])
+    return []
 
 load_userDB()
 

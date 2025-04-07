@@ -1,8 +1,9 @@
 #getting info for the frontend, heart of the backend
 import json
 from dataclasses import dataclass, field
-from fastapi import Response, FastAPI, HTTPException
+from fastapi import Response, FastAPI, HTTPException, Query
 from user import *
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -62,7 +63,7 @@ def read_root() ->Response:
 #what frontend will have to do
 @app.get("/kanji/{kanji_id}", response_model=Kanji)
 def read_kanji(kanji_id: int) -> Kanji:
-    """return knajis based on kanji id"""
+    """return kanjis based on kanji id"""
     if kanji_id not in kanjis:
         raise HTTPException(status_code=404, detail="Kanji not found")
     return kanjis[kanji_id]
@@ -90,6 +91,13 @@ def read_username(username: str) ->Response:
         return Response("valid username: " + username)
     raise HTTPException(status_code=404, detail="Username not found")
 
+"""@app.get("/favorites", response_model=str)
+def read_favorites(favorites: str) ->Response:
+    u = User(favorites=favorites)
+    if u.favorites_exists():
+        return Response("Favorites: " + favorites)
+    raise HTTPException(status_code=404, detail="Favorite not found")"""
+
 #post for user sending info
 @app.post("/user/add", response_model=User)
 def user_add(user: User) -> User:
@@ -99,3 +107,23 @@ def user_add(user: User) -> User:
     except ValueError as e:
         raise HTTPException(status_code=400, detail=f"{e}") #returns error message of ValueError of user.py
     return user
+
+
+class FavoriteRequest(BaseModel):
+    username: str
+    character: str
+
+@app.post("/favorite")
+def favorite(request: FavoriteRequest):
+    if not request.username or not request.character:
+        raise HTTPException(status_code=400, detail="Username and character are required.")
+    add_favorite(request.username, request.character)
+    return {"message": f"Added '{request.character}' to {request.username}'s favorites."}
+
+@app.get("/favorites")
+def favorites(username: str = Query(..., description="Username to retrieve favorites for")):
+    favorites_list = get_favorites(username)
+    return {"username": username, "favorites": favorites_list}
+
+if __name__ == '__main__':
+    app.run(debug=True)

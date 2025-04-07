@@ -1,7 +1,10 @@
 [
   {
     "username": "sarah",
-    "password": "1234abcd"
+    "password": "1234abcd",
+    "favorites": [
+      "kanji", "thing"
+    ]
   },
   {
     "username": "julie",
