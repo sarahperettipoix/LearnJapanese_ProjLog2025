@@ -52,7 +52,9 @@ with open(file_path, encoding="utf8") as file:
     kanjis_raw = json.load(file)
     for kanji_raw in kanjis_raw:
         kanji = Kanji(**kanji_raw)
-        kanjis[kanji.id] = kanji 
+        kanjis[kanji.id] = kanji
+if not os.path.exists(file_path):
+    raise FileNotFoundError(f"Could not find kanjis.json at: {file_path}")
 
 #put in file path to JSON
 """ with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/kanjis.json", encoding="utf8") as file:
