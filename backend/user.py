@@ -15,12 +15,6 @@ class User:
             return True
         return False
 
-    def favorites_exists(self) -> bool:
-        """checks if username exists."""
-        if self.favorites is not None:
-            return True
-        return False
-
     def login_user(self):
         """checks if password matches username."""
         if self.username_exists():
@@ -37,6 +31,29 @@ class User:
 
         users[self.username] = self
         save_userDB()
+
+    # SophTries
+    def add_favorite(self, item: str):
+        if item not in self.favorites:
+            self.favorites.append(item)
+            save_userDB()
+
+
+    def remove_favorite(self, item: str):
+        if item in self.favorites:
+            self.favorites.remove(item)
+            save_userDB
+
+    def get_favorites(self) -> list[str]:  # get all favorite items
+        return self.favorites
+        # Soph attempt with flashcard
+
+
+    def add_to_favorites(self, flashcard_id: str):
+        if flashcard_id not in self.favorites:
+            self.favorites.append(flashcard_id)
+        else:
+            raise ValueError("Flashcard already in favorites")
 
 users: dict[str, User] = {}
 
@@ -86,3 +103,8 @@ def read_user(username: str, password: str) -> User:
     if password != users[username].password:
         raise HTTPException(status_code=404, detail="Wrong password")
     return users[username]"""
+
+"""    def favorites_exists(self) -> bool:
+if self.favorites is not None:
+    return True
+return False"""
