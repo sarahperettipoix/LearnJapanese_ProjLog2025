@@ -42,26 +42,26 @@ class Kanji:
     JLPT: str
 
 # Get the current file's directory
-base_dir = os.path.dirname(__file__)
-file_path = os.path.join(base_dir, "db", "kanjis.json")
+""" base_dir = os.path.dirname(__file__)
+file_path = os.path.join(base_dir, "db", "kanjis.json") """
 
 # Soph: dict to store kanji data
 kanjis: dict[int, Kanji] = {}
 
-with open(file_path, encoding="utf8") as file:
+""" with open(file_path, encoding="utf8") as file:
     kanjis_raw = json.load(file)
     for kanji_raw in kanjis_raw:
         kanji = Kanji(**kanji_raw)
         kanjis[kanji.id] = kanji
 if not os.path.exists(file_path):
-    raise FileNotFoundError(f"Could not find kanjis.json at: {file_path}")
+    raise FileNotFoundError(f"Could not find kanjis.json at: {file_path}") """
 
 #put in file path to JSON
-""" with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/kanjis.json", encoding="utf8") as file:
+with open("db/kanjis.json", encoding="utf8") as file:
     kanjis_raw = json.load(file) #kanjis_raw = structure JSON
     for kanji_raw in kanjis_raw:
         kanji = Kanji(**kanji_raw)
-        kanjis[kanji.id] = kanji """
+        kanjis[kanji.id] = kanji
 
 @dataclass
 class Hiragana:
