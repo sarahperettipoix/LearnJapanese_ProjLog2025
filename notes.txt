@@ -1,0 +1,2 @@
+(sophie) for the path file to work
+cd /Users/sophieward/Documents/GitHub/ProjetLogiciel2025/backend
