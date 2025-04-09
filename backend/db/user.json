@@ -8,6 +8,8 @@
   },
   {
     "username": "julie",
-    "password": "hsagdhd"
+    "password": "hsagdhd",
+    "favorites": [
+      "kanji", "bla", "hdhfj"]
   }
 ]

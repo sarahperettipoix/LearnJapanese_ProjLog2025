@@ -1,10 +1,11 @@
 #getting info for the frontend, heart of the backend
-import json
-from dataclasses import dataclass, field
+""""why is **dict fucking up?"""
+#import json
+#from dataclasses import dataclass, field
 from fastapi import Response, FastAPI, HTTPException, Query, Cookie
 from user import *
 from typing import Annotated
-from pydantic import BaseModel
+#from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -109,6 +110,26 @@ def user_add(user: User) -> User:
         raise HTTPException(status_code=400, detail=f"{e}") #returns error message of ValueError of user.py
     return user
 
+@app.put("/user/{username}/addFavorite")
+def add_favorite(username: str, flashcard_id: str):
+    # Simulate fetching the user (replace with DB logic)
+    user = User(username=username, password="dummy", favorites=[])
+
+    try:
+        user.add_to_favorites(flashcard_id)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+    return {"message": f"Flashcard {flashcard_id} added to {username}'s favorites"}
+
+@app.get("/user/{username}/favorites", response_model=str)
+def read_favorites(favorites: list) ->Response:
+    """return username if username exist."""
+    u = User(favorites=favorites)
+    if u.username_exists():
+        return Response(favorites)
+    raise HTTPException(status_code=404, detail="favorites not found")
+
 
 """class FavoriteRequest(BaseModel):
     username: str
@@ -120,11 +141,12 @@ def favorite(request: FavoriteRequest):
         raise HTTPException(status_code=400, detail="Username and character are required.")
     add_favorite(request.username, request.character)
     return {"message": f"Added '{request.character}' to {request.username}'s favorites."}
-
+"""
 @app.get("/favorites")
 def favorites(username: str = Query(..., description="Username to retrieve favorites for")):
-    favorites_list = get_favorites(username)
-    return {"username": username, "favorites": favorites_list}"""
+    u = User(favorites=favorites)
+    favorites_list = u.get_favorites()
+    return {"username": username, "favorites": favorites_list}
 
 #cookies
 @app.get("/items/")

@@ -33,27 +33,23 @@ class User:
         save_userDB()
 
     # SophTries
-    def add_favorite(self, item: str):
-        if item not in self.favorites:
-            self.favorites.append(item)
-            save_userDB()
-
-
     def remove_favorite(self, item: str):
         if item in self.favorites:
             self.favorites.remove(item)
-            save_userDB
+            save_userDB()
 
-    def get_favorites(self) -> list[str]:  # get all favorite items
-        return self.favorites
+    def get_favorites(self):  # get all favorite items
+        if self.favorites:
+            return self.favorites
         # Soph attempt with flashcard
-
 
     def add_to_favorites(self, flashcard_id: str):
         if flashcard_id not in self.favorites:
             self.favorites.append(flashcard_id)
+            save_userDB()
         else:
-            raise ValueError("Flashcard already in favorites")
+            self.favorites.remove(flashcard_id)
+            #raise ValueError("Flashcard already in favorites")
 
 users: dict[str, User] = {}
 
