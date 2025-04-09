@@ -68,16 +68,17 @@ class Hiragana:
 
 # Get the current file's directory
 base_dir = os.path.dirname(__file__)
-file_path = os.path.join(base_dir, "db", "kanjis.json")
+file_path = os.path.join(base_dir, "db", "hiragana.json")
 
 # Soph: dict to store hiragana data
 hiraganas: dict[str, Hiragana] = {}
 
 with open(file_path, encoding="utf8") as file:
-    kanjis_raw = json.load(file)
-    for kanji_raw in kanjis_raw:
-        kanji = Kanji(**kanji_raw)
-        kanjis[kanji.id] = kanji 
+    hiraganas_raw = json.load(file)
+    #uses line as separartion to iterate on text file (hiragana raws)
+    for hiragana_raw in hiraganas_raw:
+        hiragana = Hiragana(**hiragana_raw)
+        hiraganas[hiragana.id] = hiragana 
 
 #put in file path to JSON
 """ with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/hiragana.json", encoding="utf8") as file:
@@ -94,16 +95,16 @@ class Katakana:
 
 # Get the current file's directory
 base_dir = os.path.dirname(__file__)
-file_path = os.path.join(base_dir, "db", "kanjis.json")
+file_path = os.path.join(base_dir, "db", "katakana.json")
 
 # Soph: dict to store katakana data
 katakanas: dict[str, Katakana] = {}
 
 with open(file_path, encoding="utf8") as file:
-    kanjis_raw = json.load(file)
-    for kanji_raw in kanjis_raw:
-        kanji = Kanji(**kanji_raw)
-        kanjis[kanji.id] = kanji 
+    katakanas_raw = json.load(file)
+    for katakana_raw in katakanas_raw:
+        katakana = Katakana(**katakana_raw)
+        katakanas[katakana.id] = katakana
 
 #put in file path to JSON
 """ with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/katakana.json", encoding="utf8") as file:
