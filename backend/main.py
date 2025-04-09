@@ -1,17 +1,37 @@
 #getting info for the frontend, heart of the backend
+from inspect import _void
 import json
 from dataclasses import dataclass, field
-from fastapi import Response, FastAPI, HTTPException
+from fastapi import Response, FastAPI, HTTPException, Request
 from user import *
-from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from starlette.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from motor.motor_asyncio import AsyncIOMotorClient
+from pydantic import BaseModel
+from typing import List
 import random
 
 app = FastAPI()
 templates = Jinja2Templates(directory="../frontend")
 app.mount("/static", StaticFiles(directory="../frontend/static"), name="static")
+
+
+client = AsyncIOMotorClient("mongodb://localhost:27017")
+db = client["db"]
+collection_kanji = db["kanji"]
+collection_hiragana = db["hiragana"]
+collection_katakana = db["katakana"]
+
+# Test de connexion, taper http://127.0.0.1:8080/test-db pour voir si ça marche
+@app.get("/test-db")
+async def test_db():
+    # Tester la connexion à MongoDB
+    collection = db["kanji"]
+    count = await collection.count_documents({})
+    return {"message": f"Connexion MongoDB réussie, documents kanji: {count}"}
+
+
 
 @dataclass
 class Kanji:
@@ -24,13 +44,6 @@ class Kanji:
 
 kanjis: dict[int, Kanji] = {}
 
-#put in file path to JSON
-with open("db/kanjis.json", encoding="utf8") as file:
-    kanjis_raw = json.load(file) #kanjis_raw = structure JSON
-    for kanji_raw in kanjis_raw:
-        kanji = Kanji(**kanji_raw)
-        kanjis[kanji.id] = kanji
-
 @dataclass
 class Hiragana:
     id: int
@@ -38,14 +51,6 @@ class Hiragana:
     romaji: str
 
 hiraganas: dict[int, str, Hiragana] = {}
-
-#put in file path to JSON
-with open("db/hiragana.json", encoding="utf8") as file:
-    hiraganas_raw = json.load(file)
-    #uses line as separartion to iterate on text file (hiragana raws)
-    for hiragana_raw in hiraganas_raw:
-        hiragana = Hiragana(**hiragana_raw)
-        hiraganas[hiragana.id] = hiragana
 
 @dataclass
 class Katakana:
@@ -55,18 +60,21 @@ class Katakana:
 
 katakanas: dict[int, str, Katakana] = {}
 
-#put in file path to JSON
-with open("db/katakana.json", encoding="utf8") as file:
-    katakanas_raw = json.load(file)
-    for katakana_raw in katakanas_raw:
-        katakana = Katakana(**katakana_raw)
-        katakanas[katakana.id] = katakana
-
-@app.get("/", response_class=HTMLResponse) #ask server to get sthg for u
+@app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     """return server running"""
     message = "Bienvenue sur ma page avec FastAPI et Jinja2!"
-    return templates.TemplateResponse("index.html", {"request": request, "message": message})
+
+    hiragana_list = []
+    cursor = collection_hiragana.find({})
+    async for doc in cursor:
+        doc["id"] = doc.get("id", [])
+        doc["kana"] = doc.get("kana", [])
+        doc["romaji"] = doc.get("romaji",[])
+        doc.pop("_id", None)  # supprimer l'_id sinon Pydantic râle
+        hiragana_list.append(doc)
+
+    return templates.TemplateResponse("index.html", {"request": request, "message": message, "hiragana_list": hiragana_list})
 
 
 #what frontend will have to do
@@ -83,13 +91,10 @@ def read_kanji(kanji_id: int) -> Kanji:
 async def read_hiragana(request: Request):
     """return hiraganas based on hiragana id"""
 
-    random_list = []
-    for ninin in len(hiraganas):
-        random_list[ninin].append(random.randint(1,len(hiraganas)))
-    print(random_list)
-
     message = "Bienvenue sur ma page avec FastAPI et Jinja2!"
-    return templates.TemplateResponse("flashcard.html", {"request": request, "message": message})
+    arg_hiragana = hiraganas
+
+    return templates.TemplateResponse("flashcard.html", {"request": request, "message": message, "hiragana": arg_hiragana})
 
 
 
