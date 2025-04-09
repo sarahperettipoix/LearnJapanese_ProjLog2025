@@ -1,0 +1,15 @@
+
+################# POUR MONGO DB ##############
+# j'ai importé les données dans mongodbcompass
+
+# dans un terminal
+mongod --dbpath C:\0_TRAVAIL\1_UNI\3eme\z_creation_logiciel\ProjetLogiciel2025\backend\db
+
+# pour le tuer 
+net stop MongoDB
+
+# pour le lancer
+net start MongoDB
+
+# pour vérifier son état
+netstat -ano | findstr 27017
