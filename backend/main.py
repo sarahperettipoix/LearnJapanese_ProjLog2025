@@ -8,8 +8,11 @@ from dataclasses import dataclass, field
 from fastapi import Response, FastAPI, HTTPException
 # Soph: imports everything from user.py
 from user import *
-# Soph attempt with flashcard
+# Attempt with flashcard
 from fastapi.middleware.cors import CORSMiddleware
+
+#Soph attempt2
+import os
 
 # Soph: FastAPI
 # Soph: provides API that allows frontend app to access data on kanji, hiragana, kata
@@ -38,44 +41,76 @@ class Kanji:
     meaning: str
     JLPT: str
 
+# Get the current file's directory
+base_dir = os.path.dirname(__file__)
+file_path = os.path.join(base_dir, "db", "kanjis.json")
+
 # Soph: dict to store kanji data
 kanjis: dict[int, Kanji] = {}
 
+with open(file_path, encoding="utf8") as file:
+    kanjis_raw = json.load(file)
+    for kanji_raw in kanjis_raw:
+        kanji = Kanji(**kanji_raw)
+        kanjis[kanji.id] = kanji 
+
 #put in file path to JSON
-with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/kanjis.json", encoding="utf8") as file:
+""" with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/kanjis.json", encoding="utf8") as file:
     kanjis_raw = json.load(file) #kanjis_raw = structure JSON
     for kanji_raw in kanjis_raw:
         kanji = Kanji(**kanji_raw)
-        kanjis[kanji.id] = kanji
+        kanjis[kanji.id] = kanji """
 
 @dataclass
 class Hiragana:
     id: str
     romaji: str
 
+# Get the current file's directory
+base_dir = os.path.dirname(__file__)
+file_path = os.path.join(base_dir, "db", "kanjis.json")
+
+# Soph: dict to store hiragana data
 hiraganas: dict[str, Hiragana] = {}
 
+with open(file_path, encoding="utf8") as file:
+    kanjis_raw = json.load(file)
+    for kanji_raw in kanjis_raw:
+        kanji = Kanji(**kanji_raw)
+        kanjis[kanji.id] = kanji 
+
 #put in file path to JSON
-with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/hiragana.json", encoding="utf8") as file:
+""" with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/hiragana.json", encoding="utf8") as file:
     hiraganas_raw = json.load(file)
     #uses line as separartion to iterate on text file (hiragana raws)
     for hiragana_raw in hiraganas_raw:
         hiragana = Hiragana(**hiragana_raw)
-        hiraganas[hiragana.id] = hiragana
+        hiraganas[hiragana.id] = hiragana """
 
 @dataclass
 class Katakana:
     id: str
     romaji: str
 
+# Get the current file's directory
+base_dir = os.path.dirname(__file__)
+file_path = os.path.join(base_dir, "db", "kanjis.json")
+
+# Soph: dict to store katakana data
 katakanas: dict[str, Katakana] = {}
 
+with open(file_path, encoding="utf8") as file:
+    kanjis_raw = json.load(file)
+    for kanji_raw in kanjis_raw:
+        kanji = Kanji(**kanji_raw)
+        kanjis[kanji.id] = kanji 
+
 #put in file path to JSON
-with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/katakana.json", encoding="utf8") as file:
+""" with open("/Users/sophieward/Desktop/ProjetLogiciel2025-main/backend/db/katakana.json", encoding="utf8") as file:
     katakanas_raw = json.load(file)
     for katakana_raw in katakanas_raw:
         katakana = Katakana(**katakana_raw)
-        katakanas[katakana.id] = katakana
+        katakanas[katakana.id] = katakana """
 
 # Soph: basic server check
 # when user visits /, server responds with "The server is running"
