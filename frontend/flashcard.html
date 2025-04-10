@@ -10,19 +10,22 @@
 <body>
     <div class="maincontainer">
         <button id="favourite">Favourite</button>
-        <a href="index.html">
-            <button id="back">Back</button>
+        <a href="/">
+            <button id="back" >Back</button>
         </a>
-        <!-- <button id="back"><a href="hiragana.html">Back</a></button> -->
         <button class="card">
             <div class="card-front">Front</div>
             <div class="card-back">Back</div>
         </button>
         <div class="top-buttons">
-            <button id="pronunciation">Pronunciation</button>
-            <button id="next">Next</button>
+            <button id="previous" class="nav-btn-previous">Previous</button>
+            <button id="next" class="nav-btn-next">Next</button>
         </div>
     </div>
+
+    <script id="kana-json" type="application/json">
+            {{ kana | tojson }}
+    </script>
 
     <script src="static/flashcard.js"></script>
     <!-- sources

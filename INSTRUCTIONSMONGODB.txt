@@ -8,7 +8,7 @@ mongod --dbpath C:\0_TRAVAIL\1_UNI\3eme\z_creation_logiciel\ProjetLogiciel2025\b
 # pour le tuer 
 net stop MongoDB
 
-# pour le lancer
+# pour le lancer, faut le faire en admin il semblerait
 net start MongoDB
 
 # pour vérifier son état

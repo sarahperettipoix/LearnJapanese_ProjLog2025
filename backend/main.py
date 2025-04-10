@@ -42,7 +42,7 @@ class Kanji:
     meaning: str
     JLPT: str
 
-kanjis: dict[int, Kanji] = {}
+kanjis: dict[int, str, Kanji] = {}
 
 @dataclass
 class Hiragana:
@@ -63,7 +63,13 @@ katakanas: dict[int, str, Katakana] = {}
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     """return server running"""
-    message = "Bienvenue sur ma page avec FastAPI et Jinja2!"
+
+    return templates.TemplateResponse("index.html", {"request": request})
+
+
+@app.get("/hiragana", response_class=HTMLResponse)
+async def read_hiragana(request: Request):
+    """return hiraganas based on hiragana id"""
 
     hiragana_list = []
     cursor = collection_hiragana.find({})
@@ -74,36 +80,49 @@ async def home(request: Request):
         doc.pop("_id", None)  # supprimer l'_id sinon Pydantic râle
         hiragana_list.append(doc)
 
-    return templates.TemplateResponse("index.html", {"request": request, "message": message, "hiragana_list": hiragana_list})
+    return templates.TemplateResponse("flashcard.html", {"request": request, "kana": hiragana_list})
 
 
-#what frontend will have to do
-@app.get("/kanji/{kanji_id}", response_model=Kanji)
-def read_kanji(kanji_id: int) -> Kanji:
-    """return knajis based on kanji id"""
-    if kanji_id not in kanjis:
-        raise HTTPException(status_code=404, detail="Kanji not found")
-    return kanjis[kanji_id]
+@app.get("/katakana", response_class=HTMLResponse)
+async def read_katakana(request: Request):
+    """return katakana based on hiragana id"""
+
+    katakana_list = []
+    cursor = collection_katakana.find({})
+    async for doc in cursor:
+        doc["id"] = doc.get("id", [])
+        doc["kana"] = doc.get("kana", [])
+        doc["romaji"] = doc.get("romaji",[])
+        doc.pop("_id", None)  # supprimer l'_id sinon Pydantic râle
+        katakana_list.append(doc)
+
+    return templates.TemplateResponse("flashcard.html", {"request": request, "kana": katakana_list})
 
 
+@app.get("/kanji", response_class=HTMLResponse)
+async def read_kanji(request: Request):
+    """return kanji based on hiragana id"""
 
-@app.get("/hiragana", response_class=HTMLResponse)
-async def read_hiragana(request: Request):
-    """return hiraganas based on hiragana id"""
+    return templates.TemplateResponse("kanji.html", {"request": request})
 
-    message = "Bienvenue sur ma page avec FastAPI et Jinja2!"
-    arg_hiragana = hiraganas
+@app.get("/kanjiN5", response_class=HTMLResponse)
+async def read_kanji(request: Request):
+    """return kanji based on hiragana id"""
 
-    return templates.TemplateResponse("flashcard.html", {"request": request, "message": message, "hiragana": arg_hiragana})
+    kanji_list = []
+    cursor = collection_kanji.find({})
+    async for doc in cursor:
+        doc["id"] = doc.get("id", [])
+        doc["kanji"] = doc.get("kanji", [])
+        doc["onyomi"] = doc.get("onyomi",[])
+        doc["kunyomi"] = doc.get("kunyomi",[])
+        doc["meaning"] = doc.get("meaning",[])
+        doc["JLPT"] = doc.get("JLPT",[])
+        doc.pop("_id", None)  # supprimer l'_id sinon Pydantic râle
+        kanji_list.append(doc)
 
 
-
-@app.get("/katakana/{katakana_id}", response_model=Katakana)
-def read_katakana(katakana_id: str) -> Katakana:
-    """return katakanas based on katakana id"""
-    if katakana_id not in katakanas:
-        raise HTTPException(status_code=404, detail="Katakana not found")
-    return katakanas[katakana_id]
+    return templates.TemplateResponse("flashcard.html", {"request": request, "kana": kanji_list})
 
 
 @app.get("/exists/{username}", response_model=str)

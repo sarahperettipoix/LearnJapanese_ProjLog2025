@@ -46,14 +46,16 @@ body {
 
 .card-front {
     background-color: rgb(255, 255, 255);
+    font-size: 50px;
 }
 
 .card-back {
     background-color: rgb(255, 255, 255);
     transform: rotateY(180deg); /* Correct rotation */
+    font-size: 50px;
 }
 
-#next, #pronunciation{
+#next, #previous{
     /* margin-top: 370px;
     margin-left: 425px; */
     position: absolute;
@@ -69,7 +71,7 @@ body {
 #next{
     right: 0;
 }
-#pronunciation{
+#previous{
     right: 360px;
 }
 
