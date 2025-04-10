@@ -65,32 +65,8 @@ with open("db/katakana.json", encoding="utf8") as file:
 @app.get("/index.html", response_class=HTMLResponse) #ask server to get sthg for u
 async def home(request: Request):
     """return server running"""
-    message = "Bienvenue sur ma page avec FastAPI et Jinja2!"
+    message = "Bienvenue sur l'index!"
     return templates.TemplateResponse("index.html", {"request": request, "message": message})
-
-@app.get("/kanji.html", response_class=HTMLResponse) #ask server to get sthg for u
-async def home(request: Request):
-    """return server running"""
-    message = "Bienvenue sur l'apprentissage des kanjis!"
-    return templates.TemplateResponse("kanji.html", {"request": request, "message": message})
-
-@app.get("/flashcard.html", response_class=HTMLResponse) #ask server to get sthg for u
-async def flashcard(request: Request):
-    """return server running"""
-    message = "Bienvenue sur les flashcards!"
-    return templates.TemplateResponse("flashcard.html", {"request": request, "message": message})
-
-@app.get("/browse.html", response_class=HTMLResponse) #ask server to get sthg for u
-async def browse(request: Request):
-    """return server running"""
-    message = "Bienvenue sur dans la partie browse!"
-    return templates.TemplateResponse("browse.html", {"request": request, "message": message})
-
-@app.get("/learn.html", response_class=HTMLResponse) #ask server to get sthg for u
-async def learn(request: Request):
-    """return server running"""
-    message = "Bienvenue sur dans la partie browse!"
-    return templates.TemplateResponse("learn.html", {"request": request, "message": message})
 
 @app.get("/about.html", response_class=HTMLResponse) #ask server to get sthg for u
 async def about(request: Request):
@@ -98,10 +74,34 @@ async def about(request: Request):
     message = "Bienvenue sur nos informations!"
     return templates.TemplateResponse("about.html", {"request": request, "message": message})
 
+@app.get("/browse.html", response_class=HTMLResponse) #ask server to get sthg for u
+async def browse(request: Request):
+    """return server running"""
+    message = "Bienvenue sur le browse!"
+    return templates.TemplateResponse("browse.html", {"request": request, "message": message})
+
+@app.get("/flashcard.html", response_class=HTMLResponse) #ask server to get sthg for u
+async def flashcard(request: Request):
+    """return server running"""
+    message = "Bienvenue sur les flashcards!"
+    return templates.TemplateResponse("flashcard.html", {"request": request, "message": message})
+
+@app.get("/kanji.html", response_class=HTMLResponse) #ask server to get sthg for u
+async def kanji(request: Request):
+    """return server running"""
+    message = "Bienvenue sur la page des kanjis!"
+    return templates.TemplateResponse("kanji.html", {"request": request, "message": message})
+
+@app.get("/learn.html", response_class=HTMLResponse) #ask server to get sthg for u
+async def learn(request: Request):
+    """return server running"""
+    message = "Bienvenue sur la page d'information!"
+    return templates.TemplateResponse("learn.html", {"request": request, "message": message})
+
 @app.get("/login.html", response_class=HTMLResponse) #ask server to get sthg for u
 async def login(request: Request):
     """return server running"""
-    message = "Bienvenue sur la page de connexion!"
+    message = "Bienvenue sur la page de connexion :) "
     return templates.TemplateResponse("login.html", {"request": request, "message": message})
 
 
