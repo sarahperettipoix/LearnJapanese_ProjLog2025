@@ -1,2 +1,4 @@
 (sophie) for the path file to work
 cd /Users/sophieward/Documents/GitHub/ProjetLogiciel2025/backend
+
+https://chatgpt.com/share/67fbaaf1-4510-8000-8ffb-22034699e15f
