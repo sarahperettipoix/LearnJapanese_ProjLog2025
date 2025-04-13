@@ -40,7 +40,7 @@ function doSomething (){
 }
 function add (){
     favList.push(1);
-    console.log(favList);
+    console.log(favList); /* prints out the list in console web */
     alert("Added to Favourites List!");
 }
 
