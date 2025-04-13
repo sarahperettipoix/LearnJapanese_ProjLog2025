@@ -8,28 +8,12 @@ from dataclasses import dataclass, field
 from fastapi import Response, FastAPI, HTTPException
 # Soph: imports everything from user.py
 from user import *
-# Attempt with flashcard
-from fastapi.middleware.cors import CORSMiddleware
-
-#Soph attempt2
-import os
 
 # Soph: FastAPI
 # Soph: provides API that allows frontend app to access data on kanji, hiragana, kata
 # and user info
 # initialise
 app = FastAPI()
-
-# Soph attempt with flashcard
-# Enable CORS for frontend requests
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins (change this in production)
-    allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods (GET, POST, PUT, DELETE, etc.)
-    allow_headers=["*"],  # Allow all headers
-)
-""" source: https://chatgpt.com/share/67e934b3-8d1c-8000-a753-d046cbaebc30 """
 
 # Soph: loading kanji data from json
 @dataclass
@@ -168,16 +152,3 @@ def read_hello(name: str) ->Response:
 @app.get("/hello")
 def read_hello() ->Response:
     return Response("hello world")"""
-
-# Soph attempt with flashcard
-@app.put("/user/{username}/favorites")
-def add_favorite(username: str, flashcard_id: str):
-    # Simulate fetching the user (replace with DB logic)
-    user = User(username=username, password="dummy", favorites=[])
-
-    try:
-        user.add_to_favorites(flashcard_id)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-
-    return {"message": f"Flashcard {flashcard_id} added to {username}'s favorites"}
