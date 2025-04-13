@@ -1,10 +1,11 @@
 const card = document.querySelector(".card");
 
+/* make the card clicable */
 card.addEventListener("click", function(){
-    card.classList.toggle("show");
+    card.classList.toggle("show"); /* allow the card to be flipped over */
 })
 
-document.getElementById("favourite").addEventListener("click", async () => {
+/* document.getElementById("favourite").addEventListener("click", async () => {
     const username = "sophie";  // Replace with dynamic user data
     const flashcardId = "kanji_123";  // Replace with the actual flashcard ID
 
@@ -23,4 +24,24 @@ document.getElementById("favourite").addEventListener("click", async () => {
     } catch (error) {
         console.error("Failed to add favorite:", error);
     }
-});
+}); */
+ 
+const button = document.getElementById("favourite")
+/* a list to store the favourite cards */
+const favList = []
+
+/* test */
+button.addEventListener("click", doSomething);
+/* adding 1 to the list each time it is clicked */
+button.addEventListener("click", add);
+
+function doSomething (){
+    alert("It did something!");
+}
+function add (){
+    favList.push(1);
+    console.log(favList);
+    alert("Added to Favourites List!");
+}
+
+/* https://www.youtube.com/watch?v=i_8NQuEAOmg */
