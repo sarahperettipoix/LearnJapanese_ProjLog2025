@@ -25,10 +25,6 @@ class Kanji:
     meaning: str
     JLPT: str
 
-# Get the current file's directory
-""" base_dir = os.path.dirname(__file__)
-file_path = os.path.join(base_dir, "db", "kanjis.json") """
-
 # Soph: dict to store kanji data
 kanjis: dict[int, Kanji] = {}
 
