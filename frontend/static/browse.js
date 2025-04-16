@@ -2,6 +2,7 @@
 
 /* get all dropdowns */
 const dropdowns = document.querySelectorAll('.dropdown');
+const boddy = document.getElementById("display_location")
 
 /* loop elements */
 dropdowns.forEach(dropdown => {
@@ -19,6 +20,35 @@ dropdowns.forEach(dropdown => {
     options.forEach(option => {
         option.addEventListener('click', () => {
             selected.innerText = option.innerText;
+
+
+            const jsonScript = document.getElementById("data-json");
+            const DATA = JSON.parse(jsonScript.textContent.trim());
+
+            if( selected.innerText == "Hiragana"){
+                boddy.innerHTML = DATA.hiragana.map(item => `
+                    <div class="card">
+                        <p>${item.kana}  ${item.romaji}</p>
+                    </div>
+                `).join("");
+            }
+            else if(selected.innerText == "Katakana"){
+                boddy.innerHTML = DATA.katakana.map(item => `
+                    <div class="card">
+                        <p>${item.kana}  ${item.romaji}</p>
+                    </div>
+                `).join("");
+            }
+            else if(selected.innerText == "Kanji"){
+                boddy.innerHTML = DATA.kanji.map(item => `
+                    <div class="card">
+                        <p>${item.JLPT} ${item.kanji} ${item.onyomi} ${item.kunyomi} ${item.meaning} </p>
+                    </div>
+                `).join("");
+            }
+
+
+            
             select.classList.remove('select-clicked');
             caret.classList.remove('caret-rotate');
             menu.classList.remove('menu-open');

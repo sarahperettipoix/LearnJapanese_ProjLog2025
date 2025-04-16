@@ -68,15 +68,15 @@ a {
     margin-right: auto;
 } */
 
-.title {
+/*.title {
     text-align: center;
     padding: 0;
-    height: 100vh;
+    margin-top: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: rgb(0, 0, 0);
-}
+}*/
 /* https://www.geeksforgeeks.org/how-to-center-text-horizontally-and-vertically-inside-a-div-block-in-css/ */
 .title:hover{
     color: rgb(193, 216, 195);
@@ -84,6 +84,7 @@ a {
 }
 
 .writing {
+    margin-top: 200px;
     display: flex;
     gap: 5vw; /* flexible spacing */
     justify-content: center;

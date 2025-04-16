@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcard</title>
-    <link rel="stylesheet" href="static/flashcard.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='flashcard.css') }}">
 </head>
 <body>
     <div class="maincontainer">
@@ -27,7 +27,7 @@
             {{ kana | tojson }}
     </script>
 
-    <script src="static/flashcard.js"></script>
+    <script src="../static/flashcard.js" defer></script>
     <!-- sources
     youtube: CSS Flip card effect by arjun khara: https://www.youtube.com/watch?v=OV8MVmtgmoY 
 
