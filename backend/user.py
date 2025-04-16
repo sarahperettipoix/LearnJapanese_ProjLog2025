@@ -9,17 +9,20 @@ class User:
     password: str = "" #default value
 
     def username_exists(self) -> bool:
+        """checks if username exists."""
         if self.username in users:
             return True
         return False
 
     def login_user(self):
+        """checks if password matches username."""
         if self.username_exists():
             if self.password == users[self.username].password:
                 return users[self.username]
         return False
 
     def add(self):
+        """sign up, add new user."""
         if self.username_exists():
             raise ValueError("Username already exists")
         if len(self.password) < 6:
@@ -31,6 +34,7 @@ class User:
 users: dict[str, User] = {}
 
 def load_userDB():
+    """load json and extract username and password."""
     with open("db/user.json", encoding="utf8") as file:
         users_raw = json.load(file)
         for user_raw in users_raw:
@@ -38,6 +42,7 @@ def load_userDB():
             users[user.username] = user
 
 def save_userDB():
+    """append to dict users and save to json."""
     users_list = []
     for user in users.values():
         users_list.append(user.__dict__)
