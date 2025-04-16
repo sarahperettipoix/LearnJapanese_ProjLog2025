@@ -4,6 +4,8 @@
 
 # dans un terminal
 mongod --dbpath C:\0_TRAVAIL\1_UNI\3eme\z_creation_logiciel\ProjetLogiciel2025\backend\db
+pour sophie: mongod --dbpath /Users/sophieward/Documents/GitHub/ProjetLogiciel2025/backend/db
+(then uvicorn main:app --host 0.0.0.0 --port 8080 --reload)
 
 # pour le tuer 
 net stop MongoDB
@@ -13,3 +15,4 @@ net start MongoDB
 
 # pour vérifier son état
 netstat -ano | findstr 27017
+(lsof -i :27017 pour mac)
