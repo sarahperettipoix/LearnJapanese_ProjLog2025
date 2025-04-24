@@ -14,7 +14,7 @@ import random
 
 app = FastAPI()
 templates = Jinja2Templates(directory="../frontend")
-app.mount("/static", StaticFiles(directory="../frontend/static"), name="static")
+app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
 
 
 client = AsyncIOMotorClient("mongodb://localhost:27017")
