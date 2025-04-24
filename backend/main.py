@@ -14,13 +14,13 @@ import random
 
 app = FastAPI()
 templates = Jinja2Templates(directory="../frontend")
-app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
+app.mount("/static", StaticFiles(directory="../frontend/static"), name="static")
 
 
 client = AsyncIOMotorClient("mongodb://localhost:27017")
 db = client["db"]
 collection_kanji = db["kanji"]
-collection_hiragana = db["hiragana"]
+collection_hiragana = db["hiragana"]     
 collection_katakana = db["katakana"]
 
 # Test de connexion, taper http://127.0.0.1:8080/test-db pour voir si ça marche

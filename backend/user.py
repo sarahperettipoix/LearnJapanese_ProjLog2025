@@ -35,7 +35,7 @@ users: dict[str, User] = {}
 
 def load_userDB():
     """load json and extract username and password."""
-    with open("backend/db/user.json", encoding="utf8") as file:
+    with open("db/user.json", encoding="utf8") as file:
         users_raw = json.load(file)
         for user_raw in users_raw:
             user = User(**user_raw)
@@ -46,7 +46,7 @@ def save_userDB():
     users_list = []
     for user in users.values():
         users_list.append(user.__dict__)
-    with open("backend/db/user.json", "w", encoding="utf8") as file:
+    with open("db/user.json", "w", encoding="utf8") as file:
         json_object = json.dumps(users_list, indent=2)
         #Writing to user.json
         file.write(json_object)
