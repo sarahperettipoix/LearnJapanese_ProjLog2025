@@ -1,4 +1,14 @@
-#getting info for the frontend, heart of the backend
+"""
+Class Development Logiciel
+Copyright 2025 University of Lausanne
+-----------------------------------------------------------------------------
+"""
+
+__version__ = '0.0.1'
+__authors__ = "Albasini Virgile, Chétioui Orsowen, Peretti-Poix Sarah, Ward Sophie"
+__maintainer__ = "Picca Davide"
+__email__ = "davide.picca@unil.ch"
+
 from inspect import _void
 import json
 from dataclasses import dataclass, field
@@ -26,7 +36,11 @@ collection_katakana = db["katakana"]
 # Test de connexion, taper http://127.0.0.1:8080/test-db pour voir si ça marche
 @app.get("/test-db")
 async def test_db():
-    # Tester la connexion à MongoDB
+    """
+
+    Returns: returns a response if connection with mongodb is successful
+
+    """
     collection = db["kanji"]
     count = await collection.count_documents({})
     return {"message": f"Connexion MongoDB réussie, documents kanji: {count}"}
@@ -63,14 +77,26 @@ katakanas: dict[int, str, Katakana] = {}
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    """return server running"""
+    """
+    Args:
+        request: server request
+
+    Returns: returns a html file index.html
+
+    """
 
     return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.get("/hiragana", response_class=HTMLResponse)
 async def read_hiragana(request: Request):
-    """return hiraganas based on hiragana id"""
+    """
+    Args:
+        request: server request
+
+    Returns: returns a html file flashcard.html with hiraganas
+
+    """
 
     hiragana_list = []
     cursor = collection_hiragana.find({})
@@ -86,7 +112,13 @@ async def read_hiragana(request: Request):
 
 @app.get("/katakana", response_class=HTMLResponse)
 async def read_katakana(request: Request):
-    """return katakana based on hiragana id"""
+    """
+    Args:
+        request: server request
+
+    Returns: returns a html file flashcard.html with katakanas
+
+    """
 
     katakana_list = []
     cursor = collection_katakana.find({})
@@ -108,7 +140,14 @@ async def read_kanji(request: Request):
 
 @app.get("/kanji/{level}", response_class=HTMLResponse)
 async def read_kanji_by_level(request: Request, level: str):
-    """return kanji """
+    """
+    Args:
+        request: server request
+        level: integer defining kanji complexity level 1 to 5
+
+    Returns: returns a html file flashcard.html with kanjis
+
+    """
 
     # sécurité : s'assurer que level est bien N1 → N5
     valid_levels = {"N1", "N2", "N3", "N4", "N5"}
@@ -134,7 +173,13 @@ async def read_kanji_by_level(request: Request, level: str):
 # j'ai essayé de faire des fonctions pour pas devoir réécrire 2 fois le meme code, mais ça fait tout planter donc ¯\_(ツ)_/¯
 @app.get("/browse", response_class=HTMLResponse)
 async def browse_everything(request: Request):
-    """return all"""
+    """
+    Args:
+        request: server request
+
+    Returns: returns a html file browse.html with chosen character
+
+    """
 
     hiragana_list = []
     cursor = collection_hiragana.find({})
@@ -172,7 +217,13 @@ async def browse_everything(request: Request):
 
 @app.get("/exists/{username}", response_model=str)
 def read_username(username: str) ->Response:
-    """return username if username exist."""
+    """
+    Args:
+        username: name of user
+
+    Returns: validated username if username exists, raises HTTPException otherwise
+
+    """
     u = User(username=username)
     if u.username_exists():
         return Response("valid username: " + username)
@@ -181,7 +232,13 @@ def read_username(username: str) ->Response:
 #post for user sending info
 @app.post("/user/add", response_model=User)
 def user_add(user: User) -> User:
-    """add new user."""
+    """
+    Args:
+        user: object of the class User containing username and password
+
+    Returns: returns user if user.add() returns true, raises HTTPException otherwise
+
+    """
     try:
         user.add()
     except ValueError as e:

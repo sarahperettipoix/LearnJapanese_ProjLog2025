@@ -9,7 +9,11 @@ class User:
     password: str = "" #default value
 
     def username_exists(self) -> bool:
-        """checks if username exists."""
+        """
+        verifies if username exists
+        Returns:
+
+        """
         if self.username in users:
             return True
         return False
