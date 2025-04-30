@@ -1,0 +1,197 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+/* navbar */
+ul{
+    list-style: none;
+    background: rgb(193, 216, 195);
+    display: flex;
+    padding: 10px;
+}
+.left {
+    margin-right: auto;
+    display: block;
+    padding: 20px 25px;
+    color: #ffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+}
+ul li{
+    display: inline-block;
+}
+ul li a{
+    display: block;
+    padding: 20px 25px;
+    color: #ffff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+}
+ul li a:hover{
+    background:  rgb(156, 189, 159);
+}
+
+/* footer */
+footer{
+    background: rgb(193, 216, 195);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    overflow: auto;
+}
+footer p{
+    width: 23%; /* each fourth (4 sections) */
+    margin: 0;
+    overflow: auto;
+    padding: 20px 25px;
+}
+footer p a:hover{
+    background:  rgb(156, 189, 159);
+}
+a:link {
+    text-decoration: none;
+}
+a {
+    color: white;
+}
+
+/* the levels */
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    margin: 100px auto;
+}
+/* .circle { */
+   /*  width: 15vw;
+    height: 15vw;
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 100px;
+    min-height: 100px; */
+    /* border-radius: 20%; */
+/*     display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(158, 225, 193, 1);
+} */
+.circle {
+    background-color: #f1f1f1;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgb(193, 216, 195);
+}
+/* enlever n2 */
+/* .n1, .n2, .n3, .n4 {
+    width: 20vw;
+    height: 9vw;
+    border-radius: 5%;
+}
+.n5 {
+    width: 20vw;
+    height: 20vw;
+    border-radius: 20%;
+} */
+.n1 {
+    grid-column: 3 / span 2;
+    grid-row: 1;
+    text-align: center; /* takes up 2 columns */
+    border-radius: 15px;
+    width: 10vw;
+    height: 10vw;
+}
+.n3 {
+    grid-column: 3 / span 2;
+    grid-row: 2 / span 2;
+    /* grid-row-start: 1;
+    grid-row-end: 3; */
+    border-radius: 15px;
+    width: 15vw;
+    height: 15vw;
+}
+.n5 {
+    grid-column: 2/*   / span 15 */;
+    grid-row: 3 /* / span 2 */; /* Positioned at row 4, below n2 */
+    border-radius: 15px;
+    width: 10vw;
+    height: 10vw;
+}
+.n2 {
+    grid-column: 1 / span 2; /* 1 column */
+    grid-row: 1 / span 2;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 10%;
+}
+.n4 {
+    grid-column: 1; /* Spans across columns 1 and 2 */
+    grid-row: 3; /* Starts at row 4 and spans 2 rows */
+    border-radius: 15px;
+    width: 8vw;
+    height: 8vw;
+}
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_grid_lines2 */
+
+/* .container {
+    display: flex;
+    flex-wrap: wrap; */ /* Ensures responsiveness */
+    /* justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    margin: 20px auto;
+    height: 100vh;
+} */
+
+h1{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding-top: 50px;
+    text-align: center;
+}
+p{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+}
+.centered {
+    display: flex;
+    flex-wrap: wrap; /* Ensures responsiveness */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 50%;
+    margin: 20px auto;
+}
+
+/* image */
+img {
+    max-width: 100%;
+    height: auto; /* Keeps aspect ratio */
+    display: block;
+}
+/* Ensure image container is behind */
+.image-container {
+    position: fixed; /* fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Pushes image to the background */
+}
+/* sources: https://www.w3schools.com/css/css_grid_item.asp */

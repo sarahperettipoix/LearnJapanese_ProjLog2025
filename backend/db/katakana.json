@@ -1,0 +1,132 @@
+[
+  {"id": "ア", "romaji": "a"},
+  {"id": "イ", "romaji": "i"},
+  {"id": "ウ", "romaji": "u"},
+  {"id": "エ", "romaji": "e"},
+  {"id": "オ", "romaji": "o"},
+
+  {"id": "カ", "romaji": "ka"},
+  {"id": "キ", "romaji": "ki"},
+  {"id": "ク", "romaji": "ku"},
+  {"id": "ケ", "romaji": "ke"},
+  {"id": "コ", "romaji": "ko"},
+
+  {"id": "ガ", "romaji": "ga"},
+  {"id": "ギ", "romaji": "gi"},
+  {"id": "グ", "romaji": "gu"},
+  {"id": "ゲ", "romaji": "ge"},
+  {"id": "ゴ", "romaji": "go"},
+
+  {"id": "サ", "romaji": "sa"},
+  {"id": "シ", "romaji": "shi"},
+  {"id": "ス", "romaji": "su"},
+  {"id": "セ", "romaji": "se"},
+  {"id": "ソ", "romaji": "so"},
+
+  {"id": "ザ", "romaji": "za"},
+  {"id": "ジ", "romaji": "ji"},
+  {"id": "ズ", "romaji": "zu"},
+  {"id": "ゼ", "romaji": "ze"},
+  {"id": "ゾ", "romaji": "zo"},
+
+  {"id": "タ", "romaji": "ta"},
+  {"id": "チ", "romaji": "chi"},
+  {"id": "ツ", "romaji": "tsu"},
+  {"id": "テ", "romaji": "te"},
+  {"id": "ト", "romaji": "to"},
+
+  {"id": "ダ", "romaji": "da"},
+  {"id": "ヂ", "romaji": "ji"},
+  {"id": "ヅ", "romaji": "zu"},
+  {"id": "デ", "romaji": "de"},
+  {"id": "ド", "romaji": "do"},
+
+  {"id": "ナ", "romaji": "na"},
+  {"id": "ニ", "romaji": "ni"},
+  {"id": "ヌ", "romaji": "nu"},
+  {"id": "ネ", "romaji": "ne"},
+  {"id": "ノ", "romaji": "no"},
+
+  {"id": "ハ", "romaji": "ha"},
+  {"id": "ヒ", "romaji": "hi"},
+  {"id": "フ", "romaji": "fu"},
+  {"id": "ヘ", "romaji": "he"},
+  {"id": "ホ", "romaji": "ho"},
+
+  {"id": "バ", "romaji": "ba"},
+  {"id": "ビ", "romaji": "bi"},
+  {"id": "ブ", "romaji": "bu"},
+  {"id": "ベ", "romaji": "be"},
+  {"id": "ボ", "romaji": "bo"},
+
+  {"id": "パ", "romaji": "pa"},
+  {"id": "ピ", "romaji": "pi"},
+  {"id": "プ", "romaji": "pu"},
+  {"id": "ペ", "romaji": "pe"},
+  {"id": "ポ", "romaji": "po"},
+
+  {"id": "マ", "romaji": "ma"},
+  {"id": "ミ", "romaji": "mi"},
+  {"id": "ム", "romaji": "mu"},
+  {"id": "メ", "romaji": "me"},
+  {"id": "モ", "romaji": "mo"},
+
+  {"id": "ヤ", "romaji": "ya"},
+  {"id": "ユ", "romaji": "yu"},
+  {"id": "ヨ", "romaji": "yo"},
+
+  {"id": "ラ", "romaji": "ra"},
+  {"id": "リ", "romaji": "ri"},
+  {"id": "ル", "romaji": "ru"},
+  {"id": "レ", "romaji": "re"},
+  {"id": "ロ", "romaji": "ro"},
+
+  {"id": "ワ", "romaji": "wa"},
+  {"id": "ヲ", "romaji": "wo"},
+  {"id": "ン", "romaji": "n/m"},
+
+
+  {"id": "キャ", "romaji": "kya"},
+  {"id": "キュ", "romaji": "kyu"},
+  {"id": "キョ", "romaji": "kyo"},
+
+  {"id": "ギャ", "romaji": "gya"},
+  {"id": "ギュ", "romaji": "gyu"},
+  {"id": "ギョ", "romaji": "gyo"},
+
+  {"id": "シャ", "romaji": "sha"},
+  {"id": "シュ", "romaji": "shu"},
+  {"id": "ショ", "romaji": "sho"},
+
+  {"id": "ジャ", "romaji": "ja"},
+  {"id": "ジュ", "romaji": "ju"},
+  {"id": "ジョ", "romaji": "jo"},
+
+  {"id": "チャ", "romaji": "cha"},
+  {"id": "チュ", "romaji": "chu"},
+  {"id": "チョ", "romaji": "cho"},
+
+  {"id": "ニャ", "romaji": "nya"},
+  {"id": "ニュ", "romaji": "nyu"},
+  {"id": "ニョ", "romaji": "nyo"},
+
+  {"id": "ヒャ", "romaji": "hya"},
+  {"id": "ヒュ", "romaji": "hyu"},
+  {"id": "ヒョ", "romaji": "hyo"},
+
+  {"id": "ビャ", "romaji": "bya"},
+  {"id": "ビュ", "romaji": "byu"},
+  {"id": "ビョ", "romaji": "byo"},
+
+  {"id": "ピャ", "romaji": "pya"},
+  {"id": "ピュ", "romaji": "pyu"},
+  {"id": "ピョ", "romaji": "pyo"},
+
+  {"id": "ミャ", "romaji": "mya"},
+  {"id": "ミュ", "romaji": "myu"},
+  {"id": "ミョ", "romaji": "myo"},
+
+  {"id": "リャ", "romaji": "rya"},
+  {"id": "リュ", "romaji": "ryu"},
+  {"id": "リョ", "romaji": "ryo"}
+]
