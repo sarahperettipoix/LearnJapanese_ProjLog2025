@@ -169,6 +169,20 @@ async def browse_everything(request: Request):
 
     return templates.TemplateResponse("browse.html", {"request": request, "hiragana": hiragana_list, "katakana":katakana_list, "kanji":kanji_list})
 
+""" learn html """
+@app.get("/learn", response_class=HTMLResponse)
+async def learn_everything(request: Request):
+    return templates.TemplateResponse("learn.html", {"request": request})
+
+""" about html """
+@app.get("/about", response_class=HTMLResponse)
+async def learn_everything(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request})
+
+""" login html """
+@app.get("/login", response_class=HTMLResponse)
+async def learn_everything(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
 
 @app.get("/exists/{username}", response_model=str)
 def read_username(username: str) ->Response:
