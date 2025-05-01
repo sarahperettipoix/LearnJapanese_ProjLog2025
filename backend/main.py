@@ -11,6 +11,8 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
 from typing import List
 import random
+#pour le login
+from passlib.context import CryptContext
 
 app = FastAPI()
 templates = Jinja2Templates(directory="../frontend")
@@ -22,6 +24,7 @@ db = client["db"]
 collection_kanji = db["kanji"]
 collection_hiragana = db["hiragana"]     
 collection_katakana = db["katakana"]
+collection_users = db["users"]
 
 # Test de connexion, taper http://127.0.0.1:8080/test-db pour voir si ça marche
 @app.get("/test-db")
@@ -31,7 +34,7 @@ async def test_db():
     count = await collection.count_documents({})
     return {"message": f"Connexion MongoDB réussie, documents kanji: {count}"}
 
-
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 @dataclass
 class Kanji:
@@ -59,6 +62,13 @@ class Katakana:
     romaji: str
 
 katakanas: dict[int, str, Katakana] = {}
+
+@dataclass
+class User:
+    id: int
+    username: str
+    password: str
+    # favorites : list
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -179,25 +189,47 @@ async def learn_everything(request: Request):
 async def learn_everything(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
-""" login html """
-@app.get("/login", response_class=HTMLResponse)
-async def learn_everything(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+@app.get("/signup")
+async def signup(user: User):
+    existing = await collection_users.find_one({"username": user.username})
+    if existing:
+        raise HTTPException(status_code=400, detail="Nom d'utilisateur déjà pris")
+    hashed_pw = pwd_context.hash(user.password)
+    await collection_users.insert_one({
+        "username": user.username,
+        "hashed_password": hashed_pw
+    })
+    return {"message": "Utilisateur créé"}
 
-@app.get("/exists/{username}", response_model=str)
-def read_username(username: str) ->Response:
-    """return username if username exist."""
-    u = User(username=username)
-    if u.username_exists():
-        return Response("valid username: " + username)
-    raise HTTPException(status_code=404, detail="Username not found")
+
+@app.get("/login")
+async def login(user: User):
+    found = await collection_users.find_one({"username": user.username})
+    if not found or not pwd_context.verify(user.password, found["hashed_password"]):
+        raise HTTPException(status_code=401, detail="Nom d'utilisateur ou mot de passe incorrect")
+    return {"message": "Connexion réussie"}
+
+
+
+# """ login html """
+# @app.get("/login", response_class=HTMLResponse)
+# async def login(request: Request):
+#     return templates.TemplateResponse("login.html", {"request": request})
+
+# @app.get("/exists/{username}", response_model=str)
+# def read_username(username: str) ->Response:
+#     """return username if username exist."""
+#     u = User(username=username)
+#     if u.username_exists():
+#         return Response("valid username: " + username)
+#     raise HTTPException(status_code=404, detail="Username not found")
 
 #post for user sending info
-@app.post("/user/add", response_model=User)
-def user_add(user: User) -> User:
-    """add new user."""
-    try:
-        user.add()
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=f"{e}") #returns error message of ValueError of user.py
-    return user
+# @app.post("/user/add", response_model=User)
+# def user_add(user: User) -> User:
+#     """add new user."""
+#     try:
+#         user.add()
+#     except ValueError as e:
+#         raise HTTPException(status_code=400, detail=f"{e}") #returns error message of ValueError of user.py
+#     return user
