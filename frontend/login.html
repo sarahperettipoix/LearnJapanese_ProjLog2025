@@ -62,55 +62,29 @@
 </body>
 </html> -->
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Connexion</title>
+    <title>Login</title>
 </head>
 <body>
-  <h1>Connexion</h1>
-  <form id="login-form">
-    <label for="username">Nom d'utilisateur :</label>
-    <input type="text" id="username" name="username" required /><br><br>
+    <h2>Connexion</h2>
 
-    <label for="password">Mot de passe :</label>
-    <input type="password" id="password" name="password" required /><br><br>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    
+    {% if message %}
+        <p style="color: green;">{{ message }}</p>
+    {% endif %}
 
-    <button type="submit">Se connecter</button>
-  </form>
+    <form method="post" action="/login">
+        <label>Nom d'utilisateur :</label>
+        <input type="text" name="username" required><br><br>
 
-  <p id="result"></p>
+        <label>Mot de passe :</label>
+        <input type="password" name="password" required><br><br>
 
-  <script>
-    const form = document.getElementById('login-form');
-    const result = document.getElementById('result');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const username = form.username.value;
-      const password = form.password.value;
-
-      try {
-        const response = await fetch('http://localhost:8000/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ username, password })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          result.textContent = `✅ Connexion réussie, bienvenue ${data.username} !`;
-        } else {
-          result.textContent = `❌ Erreur : ${data.detail}`;
-        }
-      } catch (error) {
-        result.textContent = "❌ Erreur de connexion au serveur.";
-      }
-    });
-  </script>
+        <input type="submit" value="Se connecter">
+    </form>
 </body>
 </html>

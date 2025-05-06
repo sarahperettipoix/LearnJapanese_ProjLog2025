@@ -2,10 +2,10 @@
 from inspect import _void
 import json
 from dataclasses import dataclass, field
-from fastapi import Response, FastAPI, HTTPException, Request
+from fastapi import Response, FastAPI, HTTPException, Request, Form, status
 from user import *
 from fastapi.templating import Jinja2Templates
-from starlette.responses import HTMLResponse
+from starlette.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
@@ -189,27 +189,64 @@ async def learn_everything(request: Request):
 async def learn_everything(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
-@app.get("/signup")
-async def signup(user: User):
-    existing = await collection_users.find_one({"username": user.username})
-    if existing:
-        raise HTTPException(status_code=400, detail="Nom d'utilisateur déjà pris")
-    hashed_pw = pwd_context.hash(user.password)
+# @app.get("/signup")
+# async def signup(user: User):
+#     existing = await collection_users.find_one({"username": user.username})
+#     if existing:
+#         raise HTTPException(status_code=400, detail="Nom d'utilisateur déjà pris")
+#     hashed_pw = pwd_context.hash(user.password)
+#     await collection_users.insert_one({
+#         "username": user.username,
+#         "hashed_password": hashed_pw
+#     })
+#     return {"message": "Utilisateur créé"}
+
+
+# Route GET : afficher le formulaire HTML
+@app.get("/login", response_class=HTMLResponse)
+async def get_login_form(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+# Route POST : traitement du formulaire
+@app.post("/login")
+async def post_login(request: Request, username: str = Form(...), password: str = Form(...)):
+    user = await collection_users.find_one({"username": username})
+    if not user or not pwd_context.verify(password, user["hashed_password"]):
+        return templates.TemplateResponse("login.html", {
+            "request": request,
+            "error": "Nom d'utilisateur ou mot de passe incorrect"
+        })
+
+    response = RedirectResponse(url="/", status_code=302)
+    response.set_cookie(key="user", value=username, httponly=True)  #cookie pour session
+    return response
+
+# Route GET : formulaire de création de compte
+@app.get("/signup", response_class=HTMLResponse)
+async def get_signup_form(request: Request):
+    return templates.TemplateResponse("signup.html", {"request": request})
+
+
+# Route POST : traitement création de compte
+@app.post("/signup")
+async def post_signup(request: Request, username: str = Form(...), password: str = Form(...)):
+    existing_user = await collection_users.find_one({"username": username})
+    if existing_user:
+        return templates.TemplateResponse("signup.html", {
+            "request": request,
+            "error": "Nom d'utilisateur déjà pris"
+        })
+
+    hashed_password = pwd_context.hash(password)
     await collection_users.insert_one({
-        "username": user.username,
-        "hashed_password": hashed_pw
+        "username": username,
+        "hashed_password": hashed_password
     })
-    return {"message": "Utilisateur créé"}
 
-
-@app.get("/login")
-async def login(user: User):
-    found = await collection_users.find_one({"username": user.username})
-    if not found or not pwd_context.verify(user.password, found["hashed_password"]):
-        raise HTTPException(status_code=401, detail="Nom d'utilisateur ou mot de passe incorrect")
-    return {"message": "Connexion réussie"}
-
-
+    return templates.TemplateResponse("signup.html", {
+        "request": request,
+        "message": "Compte créé avec succès !"
+    })
 
 # """ login html """
 # @app.get("/login", response_class=HTMLResponse)
