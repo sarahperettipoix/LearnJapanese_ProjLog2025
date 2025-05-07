@@ -5,6 +5,8 @@ const next = document.querySelector(".nav-btn-next")
 const card_front = document.querySelector(".card-front")
 const card_back = document.querySelector(".card-back")
 
+let index = 0;
+
 card.addEventListener("click", function(){
     card.classList.toggle("show");
 })
@@ -19,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         //console.log("Hiragana list:", hiraganaData);
 
-        let index = 0;
+
 
         // Vérifie si au moins un objet du tableau contient la clé "JLPT"
         const contientJLPT = hiraganaData.some(obj => "JLPT" in obj);
@@ -71,3 +73,25 @@ window.addEventListener("DOMContentLoaded", () => {
     
 });
 
+// favoris
+document.getElementById('favourite').addEventListener('click', async () => {
+    const kanaData = JSON.parse(document.getElementById('kana-json').textContent);
+    
+    // exemple simple : on prend l’élément affiché (tu peux adapter)
+    const currentIndex = index;
+    const currentKana = kanaData[currentIndex];
+
+    const response = await fetch('/add-favourite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(currentKana)
+    });
+
+    if (response.ok) {
+        alert("Ajouté aux favoris !");
+    } else {
+        alert("Erreur lors de l'ajout.");
+    }
+});

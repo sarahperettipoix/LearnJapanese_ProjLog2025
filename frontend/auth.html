@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="static/login.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="left">LEARN JAPANESE</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="/learn">Learn</a></li>
+            <li><a href="/browse">Browse</a></li>
+            <li>{% if request.cookies.user %}
+                <a href="/profile">Profile ({{ request.cookies.user }})</a>
+                {% else %}
+                <a href="/login">Login</a>
+                {% endif %}</li>
+        </ul>
+    </nav>
+    
+    <div class="image-container">
+        <img src="image/background.png" alt="Japanese">
+    </div>
+     
+    <div class="container">
+        <div class="form-box">
+           <h1 id="title">Sign Up</h1>
+           <form method="post" id="authForm" action="/signup">
+            <div class="input-group">
+                <div class="input-field" id="nameField">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Name" name="username" required>
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+            </div>
+            <div class="btn-field">
+                <button type="button" id="signupBtn">Sign up</button>
+                <button type="button" id="signinBtn" class="disable">Login in</button>
+            </div>
+            <div style="margin-top: 10px;">
+                <button type="submit">Submit</button>
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+                
+                {% if message %}
+                    <p style="color: green;">{{ message }}</p>
+                {% endif %}
+            </div>
+        </form>
+        </div>
+    </div> 
+    
+    <footer>
+        <p><a href="/">Home</a></p>
+        <p><a href="/about">About us</a></p>
+        <p><a href="/learn">Learn</a></p>
+        <p><a href="/browse">Browse</a></p>
+        <p>{% if request.cookies.user %}
+            <a href="/profile">Profile ({{ request.cookies.user }})</a>
+            {% else %}
+            <a href="/login">Login</a>
+            {% endif %}</p>
+        <p>©2025 Projet de Développement Logiciel | All rights reserved</p>
+    </footer>
+    <script src="static/login.js"></script>
+</body>
+</html> 
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Connexion</h2>
+    <form method="post" action="/login">
+        <label>Nom d'utilisateur :</label>
+        <input type="text" name="username"><br>
+        <label>Mot de passe :</label>
+        <input type="password" name="password"><br>
+        <input type="submit" value="Se connecter">
+    </form>
+</body>
+</html>-->
