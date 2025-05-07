@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,38 +15,47 @@
             <li><a href="/about">About us</a></li>
             <li><a href="/learn">Learn</a></li>
             <li><a href="/browse">Browse</a></li>
-            <li><a href="/login">Login</a></li>
+            <li>{% if request.cookies.user %}
+                <a href="/profile">Profile ({{ request.cookies.user }})</a>
+                {% else %}
+                <a href="/login">Login</a>
+                {% endif %}</li>
         </ul>
     </nav>
     
     <div class="image-container">
         <img src="image/background.png" alt="Japanese">
     </div>
-     #login 
+     
     <div class="container">
         <div class="form-box">
            <h1 id="title">Sign Up</h1>
-           <form action="">
+           <form method="post" id="authForm" action="/signup">
             <div class="input-group">
                 <div class="input-field" id="nameField">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" placeholder="Name">
-                </div>
-                <div class="input-field">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="Email">
+                    <input type="text" placeholder="Name" name="username" required>
                 </div>
                 <div class="input-field">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" name="password" required>
                 </div>
-                <p>Forget Password <a href="#">Click Here!</a></p>
             </div>
-               <div class="btn-field">
+            <div class="btn-field">
                 <button type="button" id="signupBtn">Sign up</button>
                 <button type="button" id="signinBtn" class="disable">Login in</button>
-               </div> 
-           </form>
+            </div>
+            <div style="margin-top: 10px;">
+                <button type="submit">Submit</button>
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+                
+                {% if message %}
+                    <p style="color: green;">{{ message }}</p>
+                {% endif %}
+            </div>
+        </form>
         </div>
     </div> 
     
@@ -55,36 +64,31 @@
         <p><a href="/about">About us</a></p>
         <p><a href="/learn">Learn</a></p>
         <p><a href="/browse">Browse</a></p>
-        <p><a href="/login">Login</a></p>
+        <p>{% if request.cookies.user %}
+            <a href="/profile">Profile ({{ request.cookies.user }})</a>
+            {% else %}
+            <a href="/login">Login</a>
+            {% endif %}</p>
         <p>©2025 Projet de Développement Logiciel | All rights reserved</p>
     </footer>
     <script src="static/login.js"></script>
 </body>
-</html> -->
-<!DOCTYPE html>
+</html> 
+
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Login</title>
 </head>
 <body>
     <h2>Connexion</h2>
-
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    
-    {% if message %}
-        <p style="color: green;">{{ message }}</p>
-    {% endif %}
-
     <form method="post" action="/login">
         <label>Nom d'utilisateur :</label>
-        <input type="text" name="username" required><br><br>
-
+        <input type="text" name="username"><br>
         <label>Mot de passe :</label>
-        <input type="password" name="password" required><br><br>
-
+        <input type="password" name="password"><br>
         <input type="submit" value="Se connecter">
     </form>
 </body>
-</html>
+</html>-->

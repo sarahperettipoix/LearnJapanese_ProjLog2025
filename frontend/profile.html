@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <!-- <link rel="stylesheet" href="static/login.css"> -->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="left">LEARN JAPANESE</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About us</a></li>
+            <li><a href="/learn">Learn</a></li>
+            <li><a href="/browse">Browse</a></li>
+            <li>{% if request.cookies.user %}
+                <a href="/profile">Profile ({{ request.cookies.user }})</a>
+                {% else %}
+                <a href="/login">Login</a>
+                {% endif %}</li>
+        </ul>
+    </nav>
+    <h1>Bienvenue, {{ username }} !</h1>
+    <a href="/logout">Se déconnecter</a>
+    <p>Vos favoris :</p> 
+        <div class="card-container">
+        {% for item in favourites %}
+            <div class="card">
+                <div class="card-front">{{ item }}</div>
+            </div>
+        {% else %}
+            <p>Aucun favori pour le moment.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

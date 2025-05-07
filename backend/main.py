@@ -2,10 +2,10 @@
 from inspect import _void
 import json
 from dataclasses import dataclass, field
-from fastapi import Response, FastAPI, HTTPException, Request, Form, status
+from fastapi import Response, FastAPI, HTTPException, Request, Form, status, Cookie
 from user import *
 from fastapi.templating import Jinja2Templates
-from starlette.responses import HTMLResponse, RedirectResponse
+from starlette.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
@@ -25,6 +25,7 @@ collection_kanji = db["kanji"]
 collection_hiragana = db["hiragana"]     
 collection_katakana = db["katakana"]
 collection_users = db["users"]
+collection_favourites = db["favourites"]
 
 # Test de connexion, taper http://127.0.0.1:8080/test-db pour voir si ça marche
 @app.get("/test-db")
@@ -69,6 +70,13 @@ class User:
     username: str
     password: str
     # favorites : list
+
+@dataclass
+class KanaItem(BaseModel):
+    id: str
+    contenu: str
+    romaji: str | None = None  # si c'est un hira ou kata
+    kanji: str | None = None    #si c'est un kanji
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -189,52 +197,32 @@ async def learn_everything(request: Request):
 async def learn_everything(request: Request):
     return templates.TemplateResponse("about.html", {"request": request})
 
-# @app.get("/signup")
-# async def signup(user: User):
-#     existing = await collection_users.find_one({"username": user.username})
-#     if existing:
-#         raise HTTPException(status_code=400, detail="Nom d'utilisateur déjà pris")
-#     hashed_pw = pwd_context.hash(user.password)
-#     await collection_users.insert_one({
-#         "username": user.username,
-#         "hashed_password": hashed_pw
-#     })
-#     return {"message": "Utilisateur créé"}
-
-
 # Route GET : afficher le formulaire HTML
 @app.get("/login", response_class=HTMLResponse)
 async def get_login_form(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
-
-# Route POST : traitement du formulaire
+    return templates.TemplateResponse("auth.html", {"request": request, "form": "login"})
 @app.post("/login")
 async def post_login(request: Request, username: str = Form(...), password: str = Form(...)):
     user = await collection_users.find_one({"username": username})
     if not user or not pwd_context.verify(password, user["hashed_password"]):
-        return templates.TemplateResponse("login.html", {
+        return templates.TemplateResponse("auth.html", {
             "request": request,
-            "error": "Nom d'utilisateur ou mot de passe incorrect"
+            "error": "Nom d'utilisateur ou mot de passe incorrect",
+            "form": "login"
         })
 
     response = RedirectResponse(url="/", status_code=302)
-    response.set_cookie(key="user", value=username, httponly=True)  #cookie pour session
+    response.set_cookie(key="user", value=username, httponly=True)
     return response
 
-# Route GET : formulaire de création de compte
-@app.get("/signup", response_class=HTMLResponse)
-async def get_signup_form(request: Request):
-    return templates.TemplateResponse("signup.html", {"request": request})
-
-
-# Route POST : traitement création de compte
 @app.post("/signup")
 async def post_signup(request: Request, username: str = Form(...), password: str = Form(...)):
     existing_user = await collection_users.find_one({"username": username})
     if existing_user:
-        return templates.TemplateResponse("signup.html", {
+        return templates.TemplateResponse("auth.html", {
             "request": request,
-            "error": "Nom d'utilisateur déjà pris"
+            "error": "Nom d'utilisateur déjà pris",
+            "form": "signup"
         })
 
     hashed_password = pwd_context.hash(password)
@@ -243,10 +231,32 @@ async def post_signup(request: Request, username: str = Form(...), password: str
         "hashed_password": hashed_password
     })
 
-    return templates.TemplateResponse("signup.html", {
+    return templates.TemplateResponse("auth.html", {
         "request": request,
-        "message": "Compte créé avec succès !"
+        "message": "Compte créé avec succès !",
+        "form": "signup"
     })
+
+
+@app.get("/profile")
+async def profile(request: Request, user: str = Cookie(None)):
+    if not user:
+        return RedirectResponse(url="/login", status_code=302)
+    
+    cursor = collection_favourites.find({"username": user})
+    user_favourites = []
+    async for doc in cursor:
+        doc.pop("_id", None)
+        user_favourites.append(doc["item"])
+    return templates.TemplateResponse("profile.html", {"request": request, "username": user,"favourites": user_favourites})
+
+
+@app.get("/logout")
+async def logout():
+    response = RedirectResponse(url="/login", status_code=302)
+    response.delete_cookie("user")
+    return response
+
 
 # """ login html """
 # @app.get("/login", response_class=HTMLResponse)
@@ -270,3 +280,31 @@ async def post_signup(request: Request, username: str = Form(...), password: str
 #     except ValueError as e:
 #         raise HTTPException(status_code=400, detail=f"{e}") #returns error message of ValueError of user.py
 #     return user
+
+
+@app.post("/add-favourite")
+async def add_favourite(request: Request):
+    data = await request.json()
+
+    # tu peux récupérer l’utilisateur via les cookies si nécessaire
+    username = request.cookies.get("user", "anonymous")
+
+    # Vérifie si ce favori existe déjà pour cet utilisateur
+    #TODO C'est infernal, car il faut tester une combinaison de username et qqch en commun 
+    # des hiragana et katakana, donc il faudrait une entrée commune, genre "contenu"
+    # existing = await collection_favourites.find_one({
+    #     "username": username,
+    #     "item": data,
+    # })
+
+    # if existing:
+    #     return {"message": "Déjà dans les favoris"}
+
+
+    # tu ajoutes l’élément dans une collection "favourites"
+    await collection_favourites.insert_one({
+        "username": username,
+        "item": data
+    })
+
+    return JSONResponse(content={"message": "Ajouté"}, status_code=200)

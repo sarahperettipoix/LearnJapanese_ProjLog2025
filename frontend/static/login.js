@@ -1,19 +1,18 @@
-    let signupBtn = document.getElementById("signupBtn");
-    let signinBtn = document.getElementById("signinBtn");
-    let nameField = document.getElementById("nameField");
-    let title = document.getElementById("title");
+const form = document.getElementById("authForm");
+const signupBtn = document.getElementById("signupBtn");
+const signinBtn = document.getElementById("signinBtn");
+const title = document.getElementById("title");
 
+signupBtn.addEventListener("click", function () {
+    form.action = "/signup";
+    title.textContent = "Sign Up";
+    signupBtn.classList.remove("disable");
+    signinBtn.classList.add("disable");
+});
 
-    signinBtn.onclick = function(){
-        nameField.style.maxHeight = "0";
-        title.innerHTML ="Login In";
-        signupBtn.classList.add("disable");
-        signinBtn.classList.remove("disable");
-    }
-
-    signupBtn.onclick = function(){
-        nameField.style.maxHeight = "60px";
-        title.innerHTML ="Sign Up";
-        signupBtn.classList.remove("disable");
-        signinBtn.classList.add("disable");
-    }
+signinBtn.addEventListener("click", function () {
+    form.action = "/login";
+    title.textContent = "Login";
+    signinBtn.classList.remove("disable");
+    signupBtn.classList.add("disable");
+});
