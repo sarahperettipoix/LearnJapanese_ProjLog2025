@@ -19,8 +19,10 @@
                 {% endif %}</li>
         </ul>
     </nav>
+    <div class="btn-field">
+        <button type="button" id=logoutBtn">Logout</button>
+    </div>
     <h1 class="title">Bienvenue, {{ username }} !</h1>
-    <a href="/logout">Se déconnecter</a>
     <table class="favorite_table">
         <thead class="favorite_table">
         <tr>
@@ -38,16 +40,20 @@
                         <p>Aucun favori pour le moment.</p>
                     {% endfor %}
                 </td>
-            </tr><div class="card_container">
-            {% for item in favourites %}
-                <div class="card">
-                    <div class="card-front">{{ item }}</div>
-                </div>
-            {% else %}
-                <p>Aucun favori pour le moment.</p>
-            {% endfor %}
-        </div>
+            </tr>
     </table>
-
+    <footer>
+        <p><a href="/">Home</a></p>
+        <p><a href="/about">About us</a></p>
+        <p><a href="/learn">Learn</a></p>
+        <p><a href="/browse">Browse</a></p>
+        <p> {% if request.cookies.user %}
+            <a href="/profile">Profile ({{ request.cookies.user }})</a>
+            {% else %}
+            <a href="/login">Login</a>
+            {% endif %}
+        </p>
+        <p>©2025 Projet de Développement Logiciel | All rights reserved</p>
+    </footer>
 </body>
 </html>

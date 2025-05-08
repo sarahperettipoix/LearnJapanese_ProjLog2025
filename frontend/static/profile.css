@@ -15,31 +15,20 @@
     color: rgb(193, 216, 195);
    transition: 2s;
 }
-
-.card_container {
-    display: flex;
-    flex-wrap: wrap; /* Ensures responsiveness */
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 80%;
-    margin: 20px auto;
-    height: 10vh;
-}
-
+/* table favoris */
 .favorite_table{
     padding: 5%;
     margin: 5%;
     border-collapse: collapse;
     font-size: 0.9em;
-    font-family: sans-serif;
     min-width: 90%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .favorite_table thead tr {
     background-color: rgb(193, 216, 195);
     color: white;
-    text-align: left;
+    text-align: center;
+    font-size: 25px;
 }
 /* navbar */
 ul{
@@ -98,109 +87,12 @@ a:link {
 a {
     color: white;
 }
-
-/* login */
-.container{
-    width: 100%;
-    height: 100vh;
-    /* background-image: linear-gradient(rgba(255, 255, 255, 0.8),rgba(222, 224, 222, 0.8)),url(back.jpeg); */
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.form-box{
-    width: 90%;
-    max-width: 450px;
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: rgb(193, 216, 195);
-    padding: 50px 60px 70px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.form-box h1{
-    font-size:30px;
-    margin-bottom: 60px;
-    color: #ffffff ;
-    position: relative;
-}
-.form-box h1::after{
-    content: '';
-    width: 30px;
-    height: 4px;
-    border-radius: 3px;
-    background:#ffffff ;
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.input-field{
-    background: #eaeaea;
-    margin: 15px 0;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    max-height:65px ;
-    transition: max-height 0.5s;
-    overflow: hidden;
-}
-
-input{
-    width: 100%;
-    background: transparent;
-    border: 0;
-    outline: 0;
-    padding: 18px 15px;
-}
-.input-field i{
-    margin-left: 15px;
-    color: #999;
-}
-
-form p{
-    text-align: left;
-    font-size: 13px;
-}
-form p a{
-    text-decoration: none;
-    color: #3c00a0;
-}
+/* logout button */
 .btn-field{
-    width: 100%;
-    display: flex;
+    width: 95%;
     justify-content: space-between;
-}
-/* sign in / sign up button */
-.btn-field button{
-    flex-basis: 48%;
-    background: #83d382;
-    color: #fff;
-    height: 40px;
-    border-radius: 20px;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    transition: background 1s;
-}
-.input-group{
-    height: 280px;
-}
-
-.btn-field button.disable{
-    background-color: #eaeaea;
-    color: #555;
-}
-
-/* image fix */
-/* how to make background image take up whole page?
-https://chatgpt.com/share/67e1204c-3748-8000-a4b5-55bce25b90f7
-*/
-img {
-    max-width: 100%;
-    height: auto; /* Keeps aspect ratio */
-    display: block;
+    text-align: right;
+    font-size: 20px;
+    position: absolute;
+    float: right;
 }
