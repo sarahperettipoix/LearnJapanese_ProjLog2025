@@ -169,3 +169,17 @@ https://chatgpt.com/share/67e117c1-2834-8000-8361-31e2310a7b30
 h1 {
     text-align: center;
 }
+
+/* Ensure image container is behind */
+.image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Pushes image to the background */
+}
+.image-container img {
+    width: 100%;
+    height: 100vh;
+}

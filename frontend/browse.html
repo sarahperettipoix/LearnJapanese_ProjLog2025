@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{{ url_for('static', path='browse.css') }}">
 </head>
 <body>
+    <div class="image-container">
+        <img src="static/image/pastel_background.png" alt="Japanese">
+    </div>
     <nav>
         <ul>
             <li class="left">LEARN JAPANESE</li>
@@ -28,15 +31,16 @@
             <div class="centered">
                 <h1>Browse</h1>
                 <br><br>
-                <p class="text">Bienvenue dans la partie Browse
+                <p class="text">Welcome to the Browse section!
                     <br><br>
-                    Ici vous pouvez voir les listes de mots directement en Hiragana, Katakana et Kanji, et facilement trouver 
-                    les mots qui vous intéressent.
-                    Tout ce qu'il faut faire, c'est appuyer sur la touche "Browse" et ensuite choisir si vous voulez
-                    une liste de mots en Hiragana, Katakana ou Kanji. 
+                    Here you can view word lists directly in Hiragana, Katakana and Kanji, 
+                    and easily find the words that interest you. All you need to do is press 
+                    the "Browse" button and then choose whether you want a list of words in 
+                    Hiragana, Katakana or Kanji. 
                     <br><br>
-                    Une fois ceci choisi, vous aurez accès à tous les mots de cette liste. À noter que dans la liste Kanji
-                    il y a différents niveaux. N5 est le niveau débutant et N1 est le niveau le plus difficle.
+                    Once you have chosen this, you will have access to all of the words in 
+                    that list. Note that in the Kanji list there are different levels. N5 is 
+                    the beginner level and N1 is the most difficult level.
                 </p>
             </div>
             <br><br>
@@ -64,7 +68,7 @@
             {% else %}
             <a href="/login">Login</a>
             {% endif %}</p>
-        <p>©2025 Projet de Développement Logiciel | All rights reserved</p>
+        <p>© 2025 Software Development Project | All rights reserved</p>
     </footer>
     <script id="data-json" type="application/json">
         {{ {
