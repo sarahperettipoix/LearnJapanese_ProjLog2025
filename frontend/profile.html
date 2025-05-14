@@ -38,10 +38,11 @@
                 <td>
                     <div class="card">
                         <div class="card-front">{{ item }}</div>
-                    </div>
+                        {% for item in favourites %}
                     {% else %}
                         <p>Aucun favori pour le moment.</p>
                     {% endfor %}
+                        </div>
                 </td>
             </tr>
     </table>
