@@ -6,6 +6,8 @@ const card_front = document.querySelector(".card-front")
 const card_back = document.querySelector(".card-back")
 
 let index = 0;
+let current_kana_id = 0;
+let hiraganaData;
 
 card.addEventListener("click", function(){
     card.classList.toggle("show");
@@ -15,7 +17,7 @@ card.addEventListener("click", function(){
 window.addEventListener("DOMContentLoaded", () => {
     const jsonScript = document.getElementById("kana-json");
     try {
-        const hiraganaData = JSON.parse(jsonScript.textContent.trim());
+        hiraganaData = JSON.parse(jsonScript.textContent.trim());
         
         hiraganaData.sort(() => Math.random() - 0.5);   //mélange
 
@@ -53,7 +55,6 @@ window.addEventListener("DOMContentLoaded", () => {
             index = index + 1;
             test_and_afficher(index)
         }
-        
 
         function showPreviousCard() {
             if (index > 0) {  // Si ce n'est pas le premier élément, on décrémente l'index
@@ -77,9 +78,11 @@ window.addEventListener("DOMContentLoaded", () => {
 document.getElementById('favourite').addEventListener('click', async () => {
     const kanaData = JSON.parse(document.getElementById('kana-json').textContent);
     
-    // exemple simple : on prend l’élément affiché (tu peux adapter)
+
+    // peut être il faut mettre l'id du kanji
     const currentIndex = index;
-    const currentKana = kanaData[currentIndex];
+    const currentKana = hiraganaData[currentIndex];
+    
 
     const response = await fetch('/add-favourite', {
         method: 'POST',
