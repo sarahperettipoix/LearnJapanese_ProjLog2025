@@ -1,11 +1,4 @@
-a.button {
-    padding: 1px 6px;
-    border: 1px outset buttonborder;
-    border-radius: 3px;
-    color: buttontext;
-    background-color: buttonface;
-    text-decoration: none;
-}
+
 *{
     padding: 0%;
     margin: 0%;
@@ -100,9 +93,18 @@ a {
     width: 95%;
     justify-content: space-between;
     text-align: right;
-    font-size: 20px;
     position: absolute;
     float: right;
+    margin-top: 8px;
+}
+a.button {
+    padding: 1px 6px;
+    border: 1px outset rgb(156, 189, 159);
+    border-radius: 3px;
+    color: black;
+    background-color: rgba(143, 188, 139, 1);
+    text-decoration: none;
+    font-size: 20px;
 }
 /* Ensure image container is behind */
 .image-container {
