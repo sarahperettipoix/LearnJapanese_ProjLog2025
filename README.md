@@ -65,7 +65,7 @@ et remplir le database.
 **Le projet doit être entièrement construit selon une architecture de programmation orientée objet.**
 
 1. **Sélection des films et collecte des dialogues** :
-   - Pour la sélection des données et la préparation du projet EMODIA ("ÉMotions et DIalogues Analyse"), nous utiliserons le ["Cornell Movie-Dialog Corpus"](data/movie_dialog.zip). Ce corpus         comprend un ensemble diversifié de dialogues extraits de scénarios de films, couvrant un large éventail de genres et offrant une riche variété de dynamiques émotionnelles. Cette              ressource nous permettra d'accéder directement à des transcriptions de dialogues de qualité, facilitant l'analyse des interactions et des évolutions émotionnelles entre les personnages        sans nécessiter une collecte de données supplémentaire.
+   - Pour la sélection des données et la préparation du projet EMODIA ("ÉMotions et DIalogues Analyse"), 
 
 
 ### Analyses Statistiques et Visualisations
