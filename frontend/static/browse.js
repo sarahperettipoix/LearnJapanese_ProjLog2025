@@ -28,7 +28,7 @@ dropdowns.forEach(dropdown => {
             if( selected.innerText == "Hiragana"){
                 boddy.innerHTML = DATA.hiragana.map(item => `
                     <div class="card">
-                        <p>/* ${item.kana}  */ ${item.romaji}</p>
+                        <p>${item.kana}  ${item.romaji}</p>
                     </div>
                 `).join("");
             }
