@@ -42,7 +42,9 @@ dropdowns.forEach(dropdown => {
             else if(selected.innerText == "Kanji"){
                 boddy.innerHTML = DATA.kanji.map(item => `
                     <div class="card">
-                        <p>${item.JLPT} ${item.kanji} ${item.onyomi} ${item.kunyomi} ${item.meaning} </p>
+                        ${item.kanji}
+                        <div style="font-size: 30px"> (${item.onyomi}${item.kunyomi})</div>
+                        <div style="color: darkgreen; font-style: italic; font-size: 30px">${item.meaning}</div>
                     </div>
                 `).join("");
             }

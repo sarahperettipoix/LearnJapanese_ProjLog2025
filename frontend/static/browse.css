@@ -185,9 +185,11 @@ h1 {
 }
 
 .card {
-    color: rgb(0, 0, 0);
+    color: black;
     text-align: center;
     font-size: 50px;
     font-weight: 650;
     line-height: 2;
+    /* width: 100px; */
 }
+/* hold shift + reload button */
