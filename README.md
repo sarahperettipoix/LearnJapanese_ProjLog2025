@@ -80,22 +80,22 @@ et remplir le database.
    - Le projet est né d'une volonté de créer un logiciel d'apprentissage pour
 le japonais moins austère que les options actuels.
    - Un choix de fonctionnalités a été effectué selon des considerations de difficulté
-et d'aptitudes
-     - Ces fonctionnalités ont dû s'adapater aux exigences du professeur et 
-aux capacités de chaque contributeur
+et d'aptitudes.
+     - Ces fonctionnalités ont dû s'adapter aux exigences du professeur et 
+aux capacités de chaque contributeur.
    - Un code couleur uniforme et paisible
 
 2. **Base de données** :
    - les bases de données ont été trouvés sur anki et modifier afin de
-correspondre aus attentes du projet
+correspondre aus attentes du projet.
    - initialement il était prévu de garder uniquement des json pour ce projet.
-Suite aus requêtes du professeur la framework mongoDB a été ajoutée
+Suite aus requêtes du professeur la framework mongoDB a été ajoutée.
 
 3. **Backend** :
-   - le backend a été réalisé avec fastAPI
+   - le backend a été réalisé avec fastAPI.
 
 4. **Frontend** :
-   - le frontend a été réalisé avec du html 5, css, et js.
+   - le frontend a été réalisé avec html 5, css, et js.
      
 ### Bugs potentiels
    
