@@ -4,7 +4,7 @@
     margin: 0%;
 }
 .card{
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -81,6 +81,10 @@ footer{
     justify-content: space-between;
     margin: 0;
     overflow: auto;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 footer p{
     width: 23%; /* each fourth (4 sections) */
