@@ -38,7 +38,9 @@
                 <td>
                     <div class="card">
                         {% for item in favourites %}
-                        <div class="card-front">{{ item }}</div>
+                        <div class="card-front">{{ item.kanji }} {{ item.kana }} {{ item.hiragana }} 
+                            {{ item.onyomi }} {{ item.kunyomi }} {{ item.romaji }} {{ item.meaning }}
+                        </div>
                     {% else %}
                         <p>Aucun favori pour le moment.</p>
                     {% endfor %}
