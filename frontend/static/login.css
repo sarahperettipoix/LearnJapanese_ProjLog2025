@@ -148,6 +148,17 @@ form p a{
     cursor: pointer;
     transition: background 1s;
 }
+.btn-field2 button{
+    flex-basis: 48%;
+    background: #5caa6e;
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    width: 50%;
+}
 .input-group{
     height: 280px;
 }

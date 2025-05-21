@@ -17,7 +17,7 @@ from inspect import _void
 import json
 from dataclasses import dataclass, field
 from fastapi import Response, FastAPI, HTTPException, Request, Form, status, Cookie
-from user import *
+""" from user import * """
 from fastapi.templating import Jinja2Templates
 from starlette.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles

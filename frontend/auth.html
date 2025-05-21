@@ -25,10 +25,6 @@
                 {% endif %}</li>
         </ul>
     </nav>
-    
-    <div class="image-container">
-        <img src="image/background.png" alt="Japanese">
-    </div>
      
     <div class="container">
         <div class="form-box">
@@ -48,8 +44,11 @@
                 <button type="button" id="signupBtn">Sign up</button>
                 <button type="button" id="signinBtn" class="disable">Login</button>
             </div>
+            <br>
+            <div class="btn-field2">
+                <button type="submit">Let's Learn!</button>
+            </div>
             <div style="margin-top: 10px;">
-                <button type="submit" id="signinBtn">Let's Learn</button>
                 {% if error %}
                 <p style="color: red;">{{ error }}</p>
                 {% endif %}
