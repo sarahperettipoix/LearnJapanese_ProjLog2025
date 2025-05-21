@@ -22,10 +22,20 @@
                 {% endif %}</li>
         </ul>
     </nav>
+    
+    <div>
     <div class="btn-field">
         <a href="/logout" class="button">Logout</a>
     </div>
-    <h1 class="title">Welcome, {{ username }} !</h1>
+    <div class="top">
+        <h1 class="title">
+            Welcome, {{ username }} !
+        </h1> 
+        <br><br>
+        <div class="text">
+            Scroll down to see your favorite's list!
+        </div>
+    </div>
     <table class="favorite_table">
         <thead class="favorite_table">
         <tr>
@@ -34,20 +44,24 @@
             </th>
         </tr>
         </thead>
+        {% for item in favourites %}
             <tr>
                 <td>
-                    <div class="card">
-                        {% for item in favourites %}
+                    <div class="card" data-id="{{ item.id }}">
                         <div class="card-front">{{ item.kanji }} {{ item.kana }} {{ item.hiragana }} 
                             {{ item.onyomi }} {{ item.kunyomi }} {{ item.romaji }} {{ item.meaning }}
+                            <button class="delete-btn">❌</button>
                         </div>
                     {% else %}
-                        <p>Aucun favori pour le moment.</p>
+                        <div class="no_fav">Aucun favori pour le moment.</div>
                     {% endfor %}
-                        </div>
+                    </div>
+                    <!-- <button id="delete-btn">Delete</button> -->
                 </td>
             </tr>
     </table>
+
+    <script src="static/profile.js"></script>
     <footer>
         <p><a href="/">Home</a></p>
         <p><a href="/about">About us</a></p>

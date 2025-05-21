@@ -493,3 +493,22 @@ async def add_favourite(request: Request):
     })
 
     return JSONResponse(content={"message": "Ajouté"}, status_code=200)
+
+from fastapi import Body
+
+@app.post("/remove-favourite")
+async def remove_favourite(request: Request, data: dict = Body(...)):
+    username = request.cookies.get("user", "anonymous")
+    item_id = data.get("id")
+    if not item_id:
+        return JSONResponse({"error": "Missing item id"}, status_code=400)
+
+    result = await collection_favourites.delete_one({
+        "username": username,
+        "item.id": item_id
+    })
+
+    if result.deleted_count == 0:
+        return JSONResponse({"error": "Élément non trouvé"}, status_code=404)
+
+    return JSONResponse({"message": "Favori supprimé"}, status_code=200)
