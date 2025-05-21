@@ -35,14 +35,6 @@
     padding-top: 50px;
 }
 
-.page{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
 /* https://www.geeksforgeeks.org/how-to-center-text-horizontally-and-vertically-inside-a-div-block-in-css/ */
 .title:hover{
     color: rgb(193, 216, 195);
@@ -104,10 +96,11 @@ footer{
     justify-content: space-between;
     margin: 0;
     overflow: auto;
-    position: fixed;
     left: 0;
+    position: absolute;
     bottom: 0;
     width: 100%;
+    height: 2.5rem;
 }
 footer p{
     width: 23%; /* each fourth (4 sections) */
