@@ -11,22 +11,34 @@ par niveau de difficulté, les mettre en favoris et de les reviser avec des flas
 l'interface visuelle accueillante aux couleurs matcha encourage un environment 
 de travail calme et évoque un jardin zen.
 
-### Description du dataset TODO
+### Description du dataset
 
-**Contenu**
-Dans tous les fichiers, 
+* _kanji.json_
 
-* _movie_titles_metadata.txt_
-
-   contient des informations sur chaque titre de film
-   champs :
+   contient des informations sur chaque caractère de type kanji:
   
-      * movieID,
-      * titre du film,
-      * année du film,
-      * cote IMDB,
-      * non. votes IMDB,
-      * genres au format ['genre1', 'genre2',É, 'genreN']
+  * id
+  * kanji
+  * onyomi: prononciations chinoises
+  * kunyomi: prononciations japonaises
+  * meaning: signification du kanji
+  * JLPT: niveau de difficulté
+
+* _katakana.json_
+
+   contient des informations sur chaque caractère de type katakana:
+  
+  * id
+  * katakana
+  * romaji: prononciation latine
+
+* _hiragana.json_
+
+   contient des informations sur chaque caractère de type hiragana:
+  
+  * id
+  * hiragana
+  * romaji: prononciation latine
 
 
 ### Backend Setup
@@ -62,26 +74,35 @@ et remplir le database.
 
 #### Phases du projet
 
-**Le projet doit être entièrement construit selon une architecture de programmation orientée objet.**
+**Le projet doit contenir une base de données, un backend, un frontend**
 
-1. **Sélection des films et collecte des dialogues** :
-   - Pour la sélection des données et la préparation du projet EMODIA ("ÉMotions et DIalogues Analyse"), 
+1. **Brainstorming** :
+   - Le projet est né d'une volonté de créer un logiciel d'apprentissage pour
+le japonais moins austère que les options actuels.
+   - Un choix de fonctionnalités a été effectué selon des considerations de difficulté
+et d'aptitudes
+     - Ces fonctionnalités ont dû s'adapater aux exigences du professeur et 
+aux capacités de chaque contributeur
+   - Un code couleur uniforme et paisible
 
+2. **Base de données** :
+   - les bases de données ont été trouvés sur anki et modifier afin de
+correspondre aus attentes du projet
+   - initialement il était prévu de garder uniquement des json pour ce projet.
+Suite aus requêtes du professeur la framework mongoDB a été ajoutée
 
-### Analyses Statistiques et Visualisations
+3. **Backend** :
+   - le backend a été réalisé avec fastAPI
 
-1. **Distribution des Genres de Films**
-         - Créer un histogramme ou un diagramme circulaire pour visualiser la distribution des genres de films dans le dataset.
-         - Examiner les genres de films les plus communs et ceux moins représentés pour déterminer des tendances ou des biais potentiels dans la sélection des films.
-      
+4. **Frontend** :
+   - le frontend a été réalisé avec du html 5, css, et js.
      
-### Visualisations des Données Textuelles
+### Bugs potentiels
    
-1. **Cartographie des Dialogues**
-         - Créer des graphes de réseau pour visualiser les interactions entre personnages dans les films, en illustrant la fréquence et la profondeur des dialogues.
-         - Utiliser des cartes de chaleur pour montrer la densité des échanges entre différents personnages principaux.
+1. **fonctionnalité de favoris**
+   - 
 
-   
+
 ### Contributeurs
 
 Sarah Peretti-Poix
