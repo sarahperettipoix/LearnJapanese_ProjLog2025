@@ -43,26 +43,19 @@ de travail calme et évoque un jardin zen.
 
 ### Backend Setup
 
-Aller au dossier backend/ :
-
-    cd backend
-
 Créer et activer un environnement virtuel:
 
     python -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
 
+Aller au dossier backend/ :
+
+    cd backend
+
 Installer les Python packages requis:
 
     pip install -r requirements.txt
 
-Démarrer le server backend:
-
-    bash runBackend.bash  
-
-Sur Windows: 
-
-    runBackend_windows.bash
 
 ### Database Initialisation
 
@@ -100,7 +93,8 @@ Suite aus requêtes du professeur la framework mongoDB a été ajoutée.
 ### Bugs potentiels
    
 1. **fonctionnalité de favoris**
-   - 
+   - en l'état actuel, les favoris peuvent être ajouté plusieurs fois, 
+cependant ils peuvent être retiré
 
 
 ### Contributeurs

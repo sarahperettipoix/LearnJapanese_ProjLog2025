@@ -152,7 +152,6 @@ async def home(request: Request):
     Returns:
         TemplateResponse: Page index.html
     """
-    #"""return server running"""
 
     return templates.TemplateResponse("index.html", {"request": request})
 
@@ -300,7 +299,7 @@ async def browse_everything(request: Request):
 @app.get("/learn", response_class=HTMLResponse)
 async def learn_everything(request: Request):
     """
-    Retourne la page d'apprentissage. 
+    Retourne la page d'apprentissage.
 
     Args:
         request (Request): Objet requête FastAPI
@@ -337,6 +336,7 @@ async def get_login_form(request: Request):
         TemplateResponse: Page auth.html en mode login
     """
     return templates.TemplateResponse("auth.html", {"request": request, "form": "login"})
+
 @app.post("/login")
 async def post_login(request: Request, username: str = Form(...), password: str = Form(...)):
     """
@@ -433,31 +433,6 @@ async def logout():
     response.delete_cookie("user")
     return response
 
-
-# """ login html """
-# @app.get("/login", response_class=HTMLResponse)
-# async def login(request: Request):
-#     return templates.TemplateResponse("login.html", {"request": request})
-
-# @app.get("/exists/{username}", response_model=str)
-# def read_username(username: str) ->Response:
-#     """return username if username exist."""
-#     u = User(username=username)
-#     if u.username_exists():
-#         return Response("valid username: " + username)
-#     raise HTTPException(status_code=404, detail="Username not found")
-
-#post for user sending info
-# @app.post("/user/add", response_model=User)
-# def user_add(user: User) -> User:
-#     """add new user."""
-#     try:
-#         user.add()
-#     except ValueError as e:
-#         raise HTTPException(status_code=400, detail=f"{e}") #returns error message of ValueError of user.py
-#     return user
-
-
 @app.post("/add-favourite")
 async def add_favourite(request: Request):
     """
@@ -471,19 +446,19 @@ async def add_favourite(request: Request):
     """
     data = await request.json()
 
-    # tu peux récupérer l’utilisateur via les cookies si nécessaire
+    # récuperation de l’utilisateur via les cookies si nécessaire
     username = request.cookies.get("user", "anonymous")
 
     # Vérifie si ce favori existe déjà pour cet utilisateur
-    #TODO C'est infernal, car il faut tester une combinaison de username et qqch en commun 
-    # des hiragana et katakana, donc il faudrait une entrée commune, genre "contenu"
-    # existing = await collection_favourites.find_one({
-    #     "username": username,
-    #     "item": data,
-    # })
+    """TODO C'est infernal, car il faut tester une combinaison de username et qqch en commun
+    des hiragana et katakana, donc il faudrait une entrée commune, genre "contenu"
+    existing = await collection_favourites.find_one({
+         "username": username,
+         "item": data,
+    })
 
-    # if existing:
-    #     return {"message": "Déjà dans les favoris"}
+    if existing:
+         return {"message": "Déjà dans les favoris"}"""
 
 
     # tu ajoutes l’élément dans une collection "favourites"
