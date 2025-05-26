@@ -27,7 +27,6 @@ ProjetLogiciel2025/
 │   │   ├── user.js
 │   │   ├── katakana.js
 │   │   └── hiragana.js
-│   ├── db copie
 │   └── requirements.txt
 ├── frontend/
 │   ├── static
