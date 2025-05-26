@@ -107,7 +107,7 @@ et remplir le database.
 
 1. **Brainstorming** :
    - Le projet est né d'une volonté de créer un logiciel d'apprentissage pour
-le japonais moins austère que les options actuels.
+aider à l'apprentissage du japonais moins austère que les options actuelles.
    - Un choix de fonctionnalités a été effectué selon des considerations de difficulté
 et d'aptitudes.
      - Ces fonctionnalités ont dû s'adapter aux exigences du professeur et 
@@ -115,21 +115,22 @@ aux capacités de chaque contributeur.
    - Un code couleur uniforme et paisible
 
 2. **Base de données** :
-   - les bases de données ont été trouvés sur anki et modifier afin de
-correspondre aus attentes du projet.
-   - initialement il était prévu de garder uniquement des json pour ce projet.
-Suite aus requêtes du professeur la framework mongoDB a été ajoutée.
+   - Les bases de données ont été trouvés sur Anki et modifiées avec des regex afin de
+correspondre aux attentes du projet. Au format json.
+   - Initialement il était prévu de garder uniquement des json pour ce projet.
+Suite aux requêtes du professeur le framework mongoDB a été ajouté, les json ont été
+importé dans mongodb.
 
 3. **Backend** :
-   - le backend a été réalisé avec fastAPI.
+   - Le backend a été réalisé avec fastAPI.
 
 4. **Frontend** :
-   - le frontend a été réalisé avec html 5, css, et js.
+   - Le frontend a été réalisé avec html 5, css, et js.
      
 ### Bugs potentiels
    
 1. **fonctionnalité de favoris**
-   - en l'état actuel, les favoris peuvent être ajouté plusieurs fois, 
+   - En l'état actuel, les favoris peuvent être ajouté plusieurs fois, 
 cependant ils peuvent être retiré
 
 
