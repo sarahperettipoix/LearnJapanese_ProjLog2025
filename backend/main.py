@@ -12,26 +12,19 @@
      - Motor : client MongoDB asynchrone
      - Passlib  : gestion du hachage des mots de passe
 """
-#getting info for the frontend, heart of the backend
 from inspect import _void
-import json
-from dataclasses import dataclass, field
-from fastapi import Response, FastAPI, HTTPException, Request, Form, status, Cookie
-""" from user import * """
+from dataclasses import dataclass
+from fastapi import FastAPI, HTTPException, Request, Form, Cookie
 from fastapi.templating import Jinja2Templates
 from starlette.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
-from typing import List
-import random
-#pour le login
 from passlib.context import CryptContext
 
 app = FastAPI()
 templates = Jinja2Templates(directory="../frontend")
 app.mount("/static", StaticFiles(directory="../frontend/static"), name="static")
-
 
 client = AsyncIOMotorClient("mongodb://localhost:27017")
 db = client["db"]
@@ -123,7 +116,6 @@ class User:
     id: int
     username: str
     password: str
-    # favorites : list
 
 @dataclass
 class KanaItem(BaseModel):
@@ -140,7 +132,6 @@ class KanaItem(BaseModel):
     romaji: str | None = None  # si c'est un hira ou kata
     kanji: str | None = None    #si c'est un kanji
 
-
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     """
@@ -154,7 +145,6 @@ async def home(request: Request):
     """
 
     return templates.TemplateResponse("index.html", {"request": request})
-
 
 @app.get("/hiragana", response_class=HTMLResponse)
 async def read_hiragana(request: Request):
@@ -176,7 +166,8 @@ async def read_hiragana(request: Request):
         doc.pop("_id", None)  # supprimer l'_id sinon Pydantic râle
         hiragana_list.append(doc)
 
-    return templates.TemplateResponse("flashcard.html", {"request": request, "kana": hiragana_list})
+    return templates.TemplateResponse("flashcard.html", {"request": request,
+                                                         "kana": hiragana_list})
 
 
 @app.get("/katakana", response_class=HTMLResponse)
@@ -199,7 +190,8 @@ async def read_katakana(request: Request):
         doc.pop("_id", None)  # supprimer l'_id sinon Pydantic râle
         katakana_list.append(doc)
 
-    return templates.TemplateResponse("flashcard.html", {"request": request, "kana": katakana_list})
+    return templates.TemplateResponse("flashcard.html", {"request": request,
+                                                         "kana": katakana_list})
 
 
 @app.get("/kanji", response_class=HTMLResponse)
@@ -234,7 +226,6 @@ async def read_kanji_by_level(request: Request, level: str):
     if level.upper() not in valid_levels:
         raise HTTPException(status_code=400, detail="Invalid JLPT level")
 
-
     kanji_list = []
     cursor = collection_kanji.find({"JLPT": level.upper()})
     async for doc in cursor:
@@ -248,9 +239,9 @@ async def read_kanji_by_level(request: Request, level: str):
         kanji_list.append(doc)
 
 
-    return templates.TemplateResponse("flashcard.html", {"request": request, "kana": kanji_list})
+    return templates.TemplateResponse("flashcard.html", {"request": request,
+                                                         "kana": kanji_list})
 
-# j'ai essayé de faire des fonctions pour pas devoir réécrire 2 fois le meme code, mais ça fait tout planter donc ¯\_(ツ)_/¯
 @app.get("/browse", response_class=HTMLResponse)
 async def browse_everything(request: Request):
     """
@@ -292,8 +283,10 @@ async def browse_everything(request: Request):
         doc.pop("_id", None)
         kanji_list.append(doc)
 
-
-    return templates.TemplateResponse("browse.html", {"request": request, "hiragana": hiragana_list, "katakana":katakana_list, "kanji":kanji_list})
+    return templates.TemplateResponse("browse.html", {"request": request,
+                                                      "hiragana": hiragana_list,
+                                                      "katakana":katakana_list,
+                                                      "kanji":kanji_list})
 
 """ learn html """
 @app.get("/learn", response_class=HTMLResponse)
@@ -338,7 +331,9 @@ async def get_login_form(request: Request):
     return templates.TemplateResponse("auth.html", {"request": request, "form": "login"})
 
 @app.post("/login")
-async def post_login(request: Request, username: str = Form(...), password: str = Form(...)):
+async def post_login(request: Request,
+                     username: str = Form(...),
+                     password: str = Form(...)):
     """
     Traite la soumission du formulaire de connexion
 
@@ -364,7 +359,9 @@ async def post_login(request: Request, username: str = Form(...), password: str 
     return response
 
 @app.post("/signup")
-async def post_signup(request: Request, username: str = Form(...), password: str = Form(...)):
+async def post_signup(request: Request,
+                      username: str = Form(...),
+                      password: str = Form(...)):
     """
     Traite la soumission du formulaire d'inscription
 
@@ -383,13 +380,11 @@ async def post_signup(request: Request, username: str = Form(...), password: str
             "error": "Nom d'utilisateur déjà pris",
             "form": "signup"
         })
-
     hashed_password = pwd_context.hash(password)
     await collection_users.insert_one({
         "username": username,
         "hashed_password": hashed_password
     })
-
     return templates.TemplateResponse("auth.html", {
         "request": request,
         "message": "Compte créé avec succès !",
@@ -418,7 +413,9 @@ async def profile(request: Request, user: str = Cookie(None)):
     async for doc in cursor:
         doc.pop("_id", None)
         user_favourites.append(doc["item"])
-    return templates.TemplateResponse("profile.html", {"request": request, "username": user,"favourites": user_favourites})
+    return templates.TemplateResponse("profile.html", {"request": request,
+                                                       "username": user,
+                                                       "favourites": user_favourites})
 
 
 @app.get("/logout")
@@ -449,19 +446,7 @@ async def add_favourite(request: Request):
     # récuperation de l’utilisateur via les cookies si nécessaire
     username = request.cookies.get("user", "anonymous")
 
-    # Vérifie si ce favori existe déjà pour cet utilisateur
-    """TODO C'est infernal, car il faut tester une combinaison de username et qqch en commun
-    des hiragana et katakana, donc il faudrait une entrée commune, genre "contenu"
-    existing = await collection_favourites.find_one({
-         "username": username,
-         "item": data,
-    })
-
-    if existing:
-         return {"message": "Déjà dans les favoris"}"""
-
-
-    # tu ajoutes l’élément dans une collection "favourites"
+    # élément ajouté dans une collection "favourites"
     await collection_favourites.insert_one({
         "username": username,
         "item": data
