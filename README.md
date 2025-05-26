@@ -11,6 +11,37 @@ par niveau de difficulté, les mettre en favoris et de les reviser avec des flas
 l'interface visuelle accueillante aux couleurs matcha encourage un environment 
 de travail calme et évoque un jardin zen.
 
+### Architecture du projet
+
+```
+
+ ├── backend
+ │     ├── main.py
+ │     ├── db
+ |     |   
+ │     └── db copie
+ ├── node.py
+ │     ├── NarrativeNode (abstract)
+ │     ├── ParagraphNode
+ │     ├── CharacterNode
+ │     └── EventNode
+ ├── litterary_graph.py
+ │     └── LiteraryGraph
+ │          ├── gestion des noeuds (add_node, remove_node, filter_nodes_by_type, etc.)
+ │          ├── gestion des arêtes (add_edge, remove_edge)
+ │          ├── analyse des relations (analyze_relationships)
+ │          └── export & visualisation
+ ├── visualization.py
+ │     └── display_graph (fonction d’affichage graphique)
+ └── nlp_helper.py
+       ├── semantic_similarity
+       ├── analyze_with_llm
+       ├── get_character_names
+       └── find_event_passages
+```
+
+---
+
 ### Description du dataset
 
 * _kanji.json_
@@ -99,10 +130,3 @@ cependant ils peuvent être retiré
 
 ### Contributeurs
 
-Sarah Peretti-Poix
-
-Virgile Albasini
-
-Sophie Ward
-
-Orsowen Chétioui
