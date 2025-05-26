@@ -16,6 +16,7 @@ from inspect import _void
 from dataclasses import dataclass
 from fastapi import FastAPI, HTTPException, Request, Form, Cookie
 from fastapi.templating import Jinja2Templates
+from fastapi import Body
 from starlette.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -454,10 +455,20 @@ async def add_favourite(request: Request):
 
     return JSONResponse(content={"message": "Ajouté"}, status_code=200)
 
-from fastapi import Body
-
-@app.post("/remove-favourite")
+@app.delete("/remove-favourite")
 async def remove_favourite(request: Request, data: dict = Body(...)):
+    """
+    Supprime un élément des favoris de l'utilisateur
+
+    Args:
+        request (Request): Objet requête contenant les données JSON
+        data: dict = Boday(...): Extrait corps JSON de la requête et le met
+        dans dictionnaire data
+
+    Returns:
+        JSONResponse: Message d'erreur si pas ID ou de réussite si favori
+        supprimé
+    """
     username = request.cookies.get("user", "anonymous")
     item_id = data.get("id")
     if not item_id:
