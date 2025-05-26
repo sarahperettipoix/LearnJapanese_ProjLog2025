@@ -12,34 +12,39 @@ l'interface visuelle accueillante aux couleurs matcha encourage un environment
 de travail calme et évoque un jardin zen.
 
 ### Architecture du projet
+L'application adopte une architecture client-serveur, 
+comprenant une interface utilisateur développée en HTML 5 
+et un back-end développé avec FastAPI. MongoDB sert de base de 
+données principale pour le stockage des informations sur 
+les caractères et les utilisateurs.
 
 ```
-
- ├── backend
- │     ├── main.py
- │     ├── db
- |     |   
- │     └── db copie
- ├── node.py
- │     ├── NarrativeNode (abstract)
- │     ├── ParagraphNode
- │     ├── CharacterNode
- │     └── EventNode
- ├── litterary_graph.py
- │     └── LiteraryGraph
- │          ├── gestion des noeuds (add_node, remove_node, filter_nodes_by_type, etc.)
- │          ├── gestion des arêtes (add_edge, remove_edge)
- │          ├── analyse des relations (analyze_relationships)
- │          └── export & visualisation
- ├── visualization.py
- │     └── display_graph (fonction d’affichage graphique)
- └── nlp_helper.py
-       ├── semantic_similarity
-       ├── analyze_with_llm
-       ├── get_character_names
-       └── find_event_passages
+ProjetLogiciel2025/
+├── backend/
+│   ├── main.py
+│   ├── db
+│   │   ├── kanji.js
+│   │   ├── user.js
+│   │   ├── katakana.js
+│   │   └── hiragana.js
+│   ├── db copie
+│   └── requirements.txt
+├── frontend/
+│   ├── static
+│   │   └── images
+│   ├── auth.html
+│   ├── index.html
+│   ├── browse.html
+│   ├── flashcard.html
+│   ├── profile.html
+│   ├── learn.html
+│   └── about.html
+├── dbInsertion.SQL
+├── dbTable.SQL
+├── old/
+├── INSTRUCTIONSMONGODB.txt
+└── README.md
 ```
-
 ---
 
 ### Description du dataset
@@ -129,4 +134,7 @@ cependant ils peuvent être retiré
 
 
 ### Contributeurs
-
+Sarah Peretti-Poix
+Virgile Albasini
+Sophie Ward
+Orsowen Chétioui
