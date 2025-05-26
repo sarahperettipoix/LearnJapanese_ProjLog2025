@@ -6,7 +6,7 @@ L'objectif principal de ce projet est de créer un logiciel
 d'apprentissage des caractères japonais en utilisant des flashcards.
 
 #### Implications et applications potentielles
-Le projet permettra aux étudiants de japonais, d'apprendre les caractères
+Le projet permettra aux étudiants de japonais d'apprendre les caractères
 par niveau de difficulté, les mettre en favoris et de les reviser avec des flashcards.
 l'interface visuelle accueillante aux couleurs matcha encourage un environment 
 de travail calme et évoque un jardin zen.
