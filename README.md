@@ -107,7 +107,7 @@ et remplir le database.
 
 1. **Brainstorming** :
    - Le projet est né d'une volonté de créer un logiciel d'apprentissage pour
-aider à l'apprentissage du japonais moins austère que les options actuelles.
+le japonais moins austère que les options actuelles.
    - Un choix de fonctionnalités a été effectué selon des considerations de difficulté
 et d'aptitudes.
      - Ces fonctionnalités ont dû s'adapter aux exigences du professeur et 
