@@ -1,22 +1,25 @@
 # Learn Japanese: Projet Logiciel 2025
-## Logiciel d'apprentissage des caractères japonais
 
-#### Objectif du projet
+## Objectif du projet
 L'objectif principal de ce projet est de créer un logiciel
 d'apprentissage des caractères japonais en utilisant des flashcards.
 
-#### Implications et applications potentielles
+### Implications et applications potentielles
 Le projet permettra aux étudiants de japonais d'apprendre les caractères
 par niveau de difficulté, les mettre en favoris et de les reviser avec des flashcards.
 L'interface visuelle accueillante aux couleurs matcha encourage un environment 
 de travail calme et évoque un jardin zen.
 
-### Architecture du projet
-L'application adopte une architecture client-serveur, 
-comprenant une interface utilisateur développée en HTML 5 
-et un back-end développé avec FastAPI. MongoDB sert de base de 
-données principale pour le stockage des informations sur 
-les caractères et les utilisateurs.
+## Modules
+
+* main.py : Ce module implémente :
+    - Les routes FastAPI pour le frontend
+    - La gestion des utilisateurs (login/signup)
+    - L'accès aux données des kanas (hiragana, katakana) et kanjis
+    - Le système de favoris
+
+
+## Architecture du projet
 
 ```
 ProjetLogiciel2025/
@@ -58,7 +61,7 @@ ProjetLogiciel2025/
 ```
 ---
 
-### Description du dataset
+## Description du dataset
 
 * _kanji.json_
 
@@ -87,8 +90,12 @@ ProjetLogiciel2025/
   * hiragana
   * romaji: prononciation latine
 
-
+## Installation
 ### Backend Setup
+
+Cloner le dépôt :
+
+    git clone https://github.com/sarahperettipoix/LearnJapanese_ProjLog2025.git
 
 Créer et activer un environnement virtuel:
 
@@ -110,7 +117,23 @@ Installer les Python packages requis:
 * Suivre les instructions de INSTRUCTIONSMONGODB.txt pour mettre 
 en place le database.
 
-#### Phases du projet
+## Fonctions détaillées
+
+### main.py
+
+#### class NarrativeNode (abstract)
+
+- `extract_content()`
+
+  - Description : Extrait le contenu textuel du nœud.  
+  - Arguments : Aucun.  
+  - Retour : `str` – contenu textuel.  
+  - Exemple :
+    ```python
+    node = ParagraphNode(1, "paragraph", "Un paragraphe.")
+    print(node.extract_content())  # "Un paragraphe."
+
+## Phases du projet
 
 **Le projet doit contenir une base de données, un backend, un frontend**
 
@@ -131,19 +154,13 @@ Suite aux requêtes du professeur le framework mongoDB a été ajouté, les json
 importé dans mongodb.
 
 3. **Backend** :
-   - Le backend a été réalisé avec fastAPI.
+   - Le backend a été réalisé en python avec fastAPI.
 
 4. **Frontend** :
-   - Le frontend a été réalisé avec HTML5, CSS, et JavaScript.
-     
-### Bugs potentiels
-   
-1. **fonctionnalité de favoris**
-   - En l'état actuel, les favoris peuvent être ajouté plusieurs fois, 
-cependant ils peuvent être retiré
+   - Le frontend a été réalisé avec HTML5, CSS, JavaScript et Figma.
 
 
-### Contributeurs
+## Contributeurs
 Sarah Peretti-Poix
 Virgile Albasini
 Sophie Ward

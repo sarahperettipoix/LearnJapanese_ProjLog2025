@@ -12,6 +12,7 @@
      - Motor : client MongoDB asynchrone
      - Passlib : gestion du hachage des mots de passe
 """
+from character import *
 from dataclasses import dataclass
 from fastapi import FastAPI, HTTPException, Request, Form, Cookie
 from fastapi.templating import Jinja2Templates
@@ -75,7 +76,7 @@ kanjis: dict[int, str, Kanji] = {}
 class Hiragana:
     """
     Représente un caractère hiragana.
-    
+
     Attributes:
         id (int): Identifiant unique
         kana (str): Caractère hiragana
@@ -91,7 +92,7 @@ hiraganas: dict[int, str, Hiragana] = {}
 class Katakana:
     """
     Représente un caractère katakana.
-    
+
     Attributes:
         id (int): Identifiant unique
         kana (str): Caractère katakana
@@ -108,7 +109,7 @@ class User:
     """
     Représente un utilisateur du système.
 
-    Attributes : 
+    Attributes :
         id (int): Identifiant unique
         username (str): Nom d'utilisateur
         password (str): Mot de passe "hashed"
