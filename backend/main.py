@@ -1,7 +1,7 @@
 """
     Module principal de l'application backend pour un site d'apprentissage du japonais.
 
-    Ce module implémente : 
+    Ce module implémente :
     - Les routes FastAPI pour le frontend
     - La gestion des utilisateurs (login/signup)
     - L'accès aux données des kanas (hiragana, katakana) et kanjis
@@ -10,7 +10,7 @@
     Dépendances principales :
      - FastAPI : framework web
      - Motor : client MongoDB asynchrone
-     - Passlib  : gestion du hachage des mots de passe
+     - Passlib : gestion du hachage des mots de passe
 """
 from inspect import _void
 from dataclasses import dataclass
@@ -59,8 +59,8 @@ class Kanji:
     Attributes:
         id (int):  Identifiant un kanji
         kanji (str) : Caractère kanji
-        onyomi(list[str]) : Lectures on'yomi(chinoise)
-        kunyomi(list[str]) : Lectures kun'yomi (japonaise)
+        onyomi (list[str]) : Lectures on'yomi (chinoise)
+        kunyomi (list[str]) : Lectures kun'yomi (japonaise)
         JLPT (str) : Niveau JLPT (N1 à N5)
     """
     id: int
@@ -112,7 +112,7 @@ class User:
     Attributes : 
         id (int): Identifiant unique
         username (str): Nom d'utilisateur
-        password (str): Mot de passe hashé
+        password (str): Mot de passe "hashed"
     """
     id: int
     username: str
@@ -218,7 +218,7 @@ async def read_kanji_by_level(request: Request, level: str):
         level (str): Niveau JLPT (N1 à N5)
 
     Returns : 
-        TemplateResponse : Pafe flashcard.html avec les kanjis du niveau
+        TemplateResponse : Page flashcard.html avec les kanjis du niveau
     Raises : 
         HTTPException: Si le niveau n'est pas valide
     """
@@ -249,7 +249,7 @@ async def browse_everything(request: Request):
     Retourne toutes les données (hiragana, katakana, kanji) pour la page fe navigation.
 
     Args : 
-        request(Resquest): Objet requête FastAPI
+        request (Request): Objet requête FastAPI
     
     Returns: 
         TemplateResponse: Page browse.html avec toutes les données
@@ -345,7 +345,7 @@ async def post_login(request: Request,
 
     Returns:
         TemplateResponse: Page auth.html avec message d'erreur si échec
-        RedirectResponse: Redirection vers l'accueil si susssèss
+        RedirectResponse: Redirection vers l'accueil si succès
     """
     user = await collection_users.find_one({"username": username})
     if not user or not pwd_context.verify(password, user["hashed_password"]):
@@ -462,8 +462,8 @@ async def remove_favourite(request: Request, data: dict = Body(...)):
 
     Args:
         request (Request): Objet requête contenant les données JSON
-        data: dict = Boday(...): Extrait corps JSON de la requête et le met
-        dans dictionnaire data
+        data: dict = Body(...): Extrait corps JSON de la requête et le met
+        dans le dictionnaire data
 
     Returns:
         JSONResponse: Message d'erreur si pas ID ou de réussite si favori
