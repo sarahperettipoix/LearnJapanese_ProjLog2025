@@ -1,5 +1,5 @@
 # Learn Japanese: Projet Logiciel 2025
-
+---
 ## Objectif du projet
 L'objectif principal de ce projet est de créer un logiciel
 d'apprentissage des caractères japonais en utilisant des flashcards.
@@ -9,7 +9,7 @@ Le projet permettra aux étudiants de japonais d'apprendre les caractères
 par niveau de difficulté, les mettre en favoris et de les reviser avec des flashcards.
 L'interface visuelle accueillante aux couleurs matcha encourage un environment 
 de travail calme et évoque un jardin zen.
-
+---
 ## Modules
 
 * main.py : Ce module implémente :
@@ -20,7 +20,7 @@ de travail calme et évoque un jardin zen.
     - les classes des kanas (hiragana, katakana) et kanjis
     - la classe de l'utilisateur
 
-
+---
 ## Architecture du projet
 
 ```
@@ -92,6 +92,7 @@ ProjetLogiciel2025/
   * hiragana
   * romaji: prononciation latine
 
+---
 ## Installation
 ### Backend Setup
 
@@ -119,6 +120,7 @@ Installer les Python packages requis:
 * Suivre les instructions de INSTRUCTIONSMONGODB.txt pour mettre 
 en place le database.
 
+---
 ## Fonctions détaillées
 
 ### character.py
@@ -330,7 +332,7 @@ importé dans mongodb.
 4. **Frontend** :
    - Le frontend a été réalisé avec HTML5, CSS, JavaScript et Figma.
 
-
+---
 ## Contributeurs
 Sarah Peretti-Poix
 Virgile Albasini
