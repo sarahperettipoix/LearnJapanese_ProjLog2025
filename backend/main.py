@@ -302,7 +302,7 @@ async def learn_everything(request: Request):
     return templates.TemplateResponse("learn.html", {"request": request})
 
 @app.get("/about", response_class=HTMLResponse)
-async def learn_everything(request: Request):
+async def about(request: Request):
     """
     Retourne la page 'À Propos' (about html)
 
