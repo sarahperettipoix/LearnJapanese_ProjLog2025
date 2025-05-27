@@ -4,7 +4,6 @@
     Ce module implémente :
     - Les routes FastAPI pour le frontend
     - La gestion des utilisateurs (login/signup)
-    - L'accès aux données des kanas (hiragana, katakana) et kanjis
     - Le système de favoris
 
     Dépendances principales :
@@ -13,14 +12,12 @@
      - Passlib : gestion du hachage des mots de passe
 """
 from character import *
-from dataclasses import dataclass
 from fastapi import FastAPI, HTTPException, Request, Form, Cookie
 from fastapi.templating import Jinja2Templates
 from fastapi import Body
 from starlette.responses import HTMLResponse, RedirectResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from motor.motor_asyncio import AsyncIOMotorClient
-from pydantic import BaseModel
 from passlib.context import CryptContext
 
 app = FastAPI()
