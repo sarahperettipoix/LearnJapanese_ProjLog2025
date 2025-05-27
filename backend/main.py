@@ -12,7 +12,6 @@
      - Motor : client MongoDB asynchrone
      - Passlib : gestion du hachage des mots de passe
 """
-from inspect import _void
 from dataclasses import dataclass
 from fastapi import FastAPI, HTTPException, Request, Form, Cookie
 from fastapi.templating import Jinja2Templates
@@ -30,7 +29,7 @@ app.mount("/static", StaticFiles(directory="../frontend/static"), name="static")
 client = AsyncIOMotorClient("mongodb://localhost:27017")
 db = client["db"]
 collection_kanji = db["kanji"]
-collection_hiragana = db["hiragana"]     
+collection_hiragana = db["hiragana"]
 collection_katakana = db["katakana"]
 collection_users = db["users"]
 collection_favourites = db["favourites"]
@@ -289,11 +288,10 @@ async def browse_everything(request: Request):
                                                       "katakana":katakana_list,
                                                       "kanji":kanji_list})
 
-""" learn html """
 @app.get("/learn", response_class=HTMLResponse)
 async def learn_everything(request: Request):
     """
-    Retourne la page d'apprentissage.
+    Retourne la page d'apprentissage (learn html).
 
     Args:
         request (Request): Objet requête FastAPI
@@ -303,11 +301,10 @@ async def learn_everything(request: Request):
     """
     return templates.TemplateResponse("learn.html", {"request": request})
 
-""" about html """
 @app.get("/about", response_class=HTMLResponse)
 async def learn_everything(request: Request):
     """
-    Retourne la page 'À Propos'
+    Retourne la page 'À Propos' (about html)
 
     Args:
         request (Request): Objet requête FastAPI
@@ -317,11 +314,10 @@ async def learn_everything(request: Request):
     """
     return templates.TemplateResponse("about.html", {"request": request})
 
-# Route GET : afficher le formulaire HTML
 @app.get("/login", response_class=HTMLResponse)
 async def get_login_form(request: Request):
     """
-    Affiche le formulaire de connexion
+    Affiche le formulaire de connexion (auth.html)
 
     Args:
         request (Request): Objet requête FastAPI
@@ -408,7 +404,7 @@ async def profile(request: Request, user: str = Cookie(None)):
     """
     if not user:
         return RedirectResponse(url="/login", status_code=302)
-    
+
     cursor = collection_favourites.find({"username": user})
     user_favourites = []
     async for doc in cursor:
