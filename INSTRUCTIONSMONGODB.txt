@@ -8,7 +8,6 @@ pour sophie: mongod --dbpath /Users/sophieward/Documents/GitHub/ProjetLogiciel20
 (then
 cd backend
 uvicorn main:app --host 0.0.0.0 --port 8080 --reload
-
 then I press on the http://0.0.0.0 and it takes me to the right functional page)
 
 # pour le tuer 

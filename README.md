@@ -8,7 +8,7 @@ d'apprentissage des caractères japonais en utilisant des flashcards.
 #### Implications et applications potentielles
 Le projet permettra aux étudiants de japonais d'apprendre les caractères
 par niveau de difficulté, les mettre en favoris et de les reviser avec des flashcards.
-l'interface visuelle accueillante aux couleurs matcha encourage un environment 
+L'interface visuelle accueillante aux couleurs matcha encourage un environment 
 de travail calme et évoque un jardin zen.
 
 ### Architecture du projet
@@ -23,25 +23,36 @@ ProjetLogiciel2025/
 ├── backend/
 │   ├── main.py
 │   ├── db
-│   │   ├── kanji.js
-│   │   ├── user.js
-│   │   ├── katakana.js
-│   │   └── hiragana.js
-│   ├── db copie
+│   │   ├── kanji.json
+│   │   ├── user.json
+│   │   ├── katakana.json
+│   │   └── hiragana.json
 │   └── requirements.txt
 ├── frontend/
 │   ├── static
-│   │   └── images
+│   │   ├── images
+│   │   │   ├──background.png
+│   │   │   ├── home.png
+│   │   │   └── pastel_background.png
+│   │   ├── about.css
+│   │   ├── browse.css
+│   │   ├── browse.js
+│   │   ├── flashcard.css
+│   │   ├── flashcard.js
+│   │   ├── kanji.css
+│   │   ├── learn.css
+│   │   ├── login.css
+│   │   ├── login.js
+│   │   ├── profile.css
+│   │   ├── profile.js
+│   │   └── style.css
+│   ├── about.html
 │   ├── auth.html
-│   ├── index.html
 │   ├── browse.html
 │   ├── flashcard.html
-│   ├── profile.html
+│   ├── index.html
 │   ├── learn.html
-│   └── about.html
-├── dbInsertion.SQL
-├── dbTable.SQL
-├── old/
+│   └── profile.html
 ├── INSTRUCTIONSMONGODB.txt
 └── README.md
 ```
@@ -98,8 +109,6 @@ Installer les Python packages requis:
 * S'assurer que MongoDB est installé et en marche.
 * Suivre les instructions de INSTRUCTIONSMONGODB.txt pour mettre 
 en place le database.
-* utiliser le dbInsertion.SQL et dbTable.SQL scripts pour initialiser 
-et remplir le database.
 
 #### Phases du projet
 
@@ -125,7 +134,7 @@ importé dans mongodb.
    - Le backend a été réalisé avec fastAPI.
 
 4. **Frontend** :
-   - Le frontend a été réalisé avec html 5, css, et js.
+   - Le frontend a été réalisé avec HTML5, CSS, et JavaScript.
      
 ### Bugs potentiels
    
