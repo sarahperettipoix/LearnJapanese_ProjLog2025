@@ -443,6 +443,13 @@ async def add_favourite(request: Request):
     # récuperation de l’utilisateur via les cookies si nécessaire
     username = request.cookies.get("user", "anonymous")
 
+    existing = await collection_favourites.find_one({
+        "username": username,
+        "item": data
+    })
+    if existing:
+        raise HTTPException(status_code=400, detail="Cet élément est déjà dans vos favoris.")
+
     # élément ajouté dans une collection "favourites"
     await collection_favourites.insert_one({
         "username": username,
