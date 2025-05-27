@@ -76,6 +76,10 @@ a {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: rgba(158, 225, 193, 1);
 }
+.circle:hover{
+    filter: brightness(0.9);
+    cursor: pointer;
+}
 /* enlever n2 */
 .n1, .n2, .n3, .n4 {
     width: 20vw;

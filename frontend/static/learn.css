@@ -106,6 +106,7 @@ a {
     justify-content: center;
     align-items: center;
     padding: 50px;
+    flex-wrap: wrap; /* ensures responsiveness */
 }
 .circle {
     width: 15vw;
