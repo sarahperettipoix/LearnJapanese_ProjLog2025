@@ -1,4 +1,4 @@
-# Learn Japanese: Projet Logiciel 2025
+Learn Japanese: Projet Logiciel 2025
 ---
 ## Objectif du projet
 L'objectif principal de ce projet est de créer un logiciel
@@ -9,18 +9,35 @@ Le projet permettra aux étudiants de japonais d'apprendre les caractères
 par niveau de difficulté, les mettre en favoris et de les reviser avec des flashcards.
 L'interface visuelle accueillante aux couleurs matcha encourage un environment 
 de travail calme et évoque un jardin zen.
----
-## Modules
-
-* main.py : Ce module implémente :
-    - Les routes FastAPI pour le frontend
-    - La gestion des utilisateurs (login/signup)
-    - Le système de favoris
-* character.py : Ce module implémente :
-    - les classes des kanas (hiragana, katakana) et kanjis
-    - la classe de l'utilisateur
 
 ---
+## Phases du projet
+
+**Le projet doit contenir une base de données, un backend, un frontend**
+
+1. **Brainstorming** :
+   - Le projet est né d'une volonté de créer un logiciel d'apprentissage pour
+le japonais moins austère que les options actuelles.
+   - Un choix de fonctionnalités a été effectué selon des considerations de difficulté
+et d'aptitudes.
+     - Ces fonctionnalités ont dû s'adapter aux exigences du professeur et 
+aux capacités de chaque contributeur.
+   - Un code couleur uniforme et paisible
+
+2. **Base de données** :
+   - Les bases de données ont été trouvés sur Anki et modifiées avec des regex afin de
+correspondre aux attentes du projet. Au format json.
+   - Initialement il était prévu de garder uniquement des json pour ce projet.
+Suite aux requêtes du professeur le framework mongoDB a été ajouté, les json ont été
+importé dans mongodb.
+
+3. **Backend** :
+   - Le backend a été réalisé en python avec fastAPI.
+
+4. **Frontend** :
+   - Le frontend a été réalisé avec HTML5, CSS, JavaScript et Figma.
+---
+
 ## Architecture du projet
 
 ```
@@ -63,6 +80,34 @@ ProjetLogiciel2025/
 ```
 ---
 
+## Installation
+### Backend Setup
+
+Cloner le dépôt :
+
+    git clone https://github.com/sarahperettipoix/LearnJapanese_ProjLog2025.git
+
+Créer et activer un environnement virtuel:
+
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+Aller au dossier backend/ :
+
+    cd backend
+
+Installer les Python packages requis:
+
+    pip install -r requirements.txt
+
+
+### Database Initialisation
+
+* S'assurer que MongoDB est installé et en marche.
+* Suivre les instructions de INSTRUCTIONSMONGODB.txt pour mettre 
+en place le database.
+
+---
 ## Description du dataset
 
 * _kanji.json_
@@ -93,101 +138,18 @@ ProjetLogiciel2025/
   * romaji: prononciation latine
 
 ---
-## Installation
-### Backend Setup
+## Modules
 
-Cloner le dépôt :
-
-    git clone https://github.com/sarahperettipoix/LearnJapanese_ProjLog2025.git
-
-Créer et activer un environnement virtuel:
-
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-Aller au dossier backend/ :
-
-    cd backend
-
-Installer les Python packages requis:
-
-    pip install -r requirements.txt
-
-
-### Database Initialisation
-
-* S'assurer que MongoDB est installé et en marche.
-* Suivre les instructions de INSTRUCTIONSMONGODB.txt pour mettre 
-en place le database.
+* main.py : Ce module implémente :
+    - Les routes FastAPI pour le frontend
+    - La gestion des utilisateurs (login/signup)
+    - Le système de favoris
+* character.py : Ce module implémente :
+    - les classes des kanas (hiragana, katakana) et kanjis
+    - la classe de l'utilisateur
 
 ---
 ## Fonctions détaillées
-
-### character.py
-
-#### dataclass KanaItem(abstract)
-- Exemple :
-```python
-kana = KanaItem(
-    id="k1",
-    contenu="か",
-    romaji="ka"
-)
-print(kana.contenu)  # "か"
-print(kana.romaji)   # "ka"
-```
-
-#### dataclass Kanji
-- Exemple :
-```python
-    kanji = Kanji(
-        id=1,
-        kanji="日",
-        onyomi=["ニチ", "ジツ"],
-        kunyomi=["ひ", "か"],
-        meaning="soleil; jour",
-        JLPT="N5"
-    )
-    print(kanji.kanji)      # "日"
-    print(kanji.meaning)    # "soleil; jour"
-    print(kanji.onyomi)     # ['ニチ', 'ジツ']
-```
-
-#### dataclass Hiragana
-
-- Exemple :
-```python
-hira = Hiragana(
-    id=1,
-    kana="あ",
-    romaji="a"
-)
-print(hira.kana)    # "あ"
-print(hira.romaji)  # "a"
-```
-
-#### dataclass Katakana
-- Exemple :
-```python
-kata = Katakana(
-    id=1,
-    kana="ア",
-    romaji="a"
-)
-print(kata.kana)    # "ア"
-print(kata.romaji)  # "a"
-```
-
-#### dataclass User
-- Exemple :
-```python
-user = User(
-    id=1,
-    username="tanaka",
-    password="hashed_password"
-)
-print(user.username)  # "tanaka"
-```
 
 ### main.py
 
@@ -303,34 +265,6 @@ print(user.username)  # "tanaka"
     ```python
     await remove_favourite(request, {"id": "kanji123"})  # {"message": "Favori supprimé"}
     ```
----
-
-
-## Phases du projet
-
-**Le projet doit contenir une base de données, un backend, un frontend**
-
-1. **Brainstorming** :
-   - Le projet est né d'une volonté de créer un logiciel d'apprentissage pour
-le japonais moins austère que les options actuelles.
-   - Un choix de fonctionnalités a été effectué selon des considerations de difficulté
-et d'aptitudes.
-     - Ces fonctionnalités ont dû s'adapter aux exigences du professeur et 
-aux capacités de chaque contributeur.
-   - Un code couleur uniforme et paisible
-
-2. **Base de données** :
-   - Les bases de données ont été trouvés sur Anki et modifiées avec des regex afin de
-correspondre aux attentes du projet. Au format json.
-   - Initialement il était prévu de garder uniquement des json pour ce projet.
-Suite aux requêtes du professeur le framework mongoDB a été ajouté, les json ont été
-importé dans mongodb.
-
-3. **Backend** :
-   - Le backend a été réalisé en python avec fastAPI.
-
-4. **Frontend** :
-   - Le frontend a été réalisé avec HTML5, CSS, JavaScript et Figma.
 
 ---
 ## Contributeurs
