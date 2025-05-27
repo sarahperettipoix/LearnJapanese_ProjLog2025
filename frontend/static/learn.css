@@ -121,6 +121,10 @@ a {
     font-size: 18px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.circle:hover{
+    filter: brightness(0.9);
+    cursor: pointer;
+}
 /* https://chatgpt.com/c/67cd78ce-7504-8000-ab74-f4b92999694b : how to make it keep the circle shape when the screen changes? */
 .hiragana {
     background-color: rgba(158, 225, 193, 1);

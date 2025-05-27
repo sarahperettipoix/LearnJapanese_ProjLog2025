@@ -449,7 +449,7 @@ async def add_favourite(request: Request):
         "item": data
     })
     if existing:
-        raise HTTPException(status_code=400, detail="Cet élément est déjà dans vos favoris.")
+        raise HTTPException(status_code=400, detail="This element is already in favorites.")
 
     # élément ajouté dans une collection "favourites"
     await collection_favourites.insert_one({
@@ -457,7 +457,7 @@ async def add_favourite(request: Request):
         "item": data
     })
 
-    return JSONResponse(content={"message": "Ajouté"}, status_code=200)
+    return JSONResponse(content={"message": "Added"}, status_code=200)
 
 @app.delete("/remove-favourite")
 async def remove_favourite(request: Request, data: dict = Body(...)):
