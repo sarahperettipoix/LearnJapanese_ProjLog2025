@@ -304,7 +304,7 @@ async def learn_everything(request: Request):
 
 """ about html """
 @app.get("/about", response_class=HTMLResponse)
-async def learn_everything(request: Request):
+async def about(request: Request):
     """
     Retourne la page 'À Propos'
 
