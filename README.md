@@ -23,29 +23,28 @@ ProjetLogiciel2025/
 ├── backend/
 │   ├── main.py
 │   ├── db
-│   │   ├── kanji.js
-│   │   ├── user.js
-│   │   ├── katakana.js
-│   │   └── hiragana.js
+│   │   ├── kanji.json
+│   │   ├── user.json
+│   │   ├── katakana.json
+│   │   └── hiragana.json
 │   └── requirements.txt
 ├── frontend/
 │   ├── static
 │   │   ├── images
-│   │   │   └── background.png
-│   │   │   └── home.png
+│   │   │   ├──background.png
+│   │   │   ├── home.png
 │   │   │   └── pastel_background.png
-│   │   └── about.css
-│   │   └── browse.css
-│   │   └── browse.js
-│   │   └── flashcard.css
-│   │   └── flashcard.js
-│   │   └── index.js
-│   │   └── kanji.css
-│   │   └── learn.css
-│   │   └── login.css
-│   │   └── login.js
-│   │   └── profile.css
-│   │   └── profile.js
+│   │   ├── about.css
+│   │   ├── browse.css
+│   │   ├── browse.js
+│   │   ├── flashcard.css
+│   │   ├── flashcard.js
+│   │   ├── kanji.css
+│   │   ├── learn.css
+│   │   ├── login.css
+│   │   ├── login.js
+│   │   ├── profile.css
+│   │   ├── profile.js
 │   │   └── style.css
 │   ├── about.html
 │   ├── auth.html
@@ -53,9 +52,7 @@ ProjetLogiciel2025/
 │   ├── flashcard.html
 │   ├── index.html
 │   ├── learn.html
-│   ├── profile.html
-├── dbInsertion.SQL
-├── dbTable.SQL
+│   └── profile.html
 ├── INSTRUCTIONSMONGODB.txt
 └── README.md
 ```
@@ -112,8 +109,6 @@ Installer les Python packages requis:
 * S'assurer que MongoDB est installé et en marche.
 * Suivre les instructions de INSTRUCTIONSMONGODB.txt pour mettre 
 en place le database.
-* utiliser le dbInsertion.SQL et dbTable.SQL scripts pour initialiser 
-et remplir le database.
 
 #### Phases du projet
 
