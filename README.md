@@ -268,7 +268,7 @@ en place le database.
 
 ---
 ## Contributeurs
-Sarah Peretti-Poix
-Virgile Albasini
-Sophie Ward
+Sarah Peretti-Poix,
+Virgile Albasini,
+Sophie Ward,
 Orsowen Chétioui
