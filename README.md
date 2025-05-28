@@ -13,7 +13,9 @@ de travail calme et évoque un jardin zen.
 ---
 ## Phases du projet
 
-**Le projet doit contenir une base de données, un backend, un frontend**
+La documentation relative à la gestion du projet se trouve
+sur: https://drive.google.com/drive/folders/14kh2zoLGVTk_qwkc2zDcB4qENHxzkzXu?usp=sharing
+Le projet devait contenir une base de données, un backend, un frontend**
 
 1. **Brainstorming** :
    - Le projet est né d'une volonté de créer un logiciel d'apprentissage pour
